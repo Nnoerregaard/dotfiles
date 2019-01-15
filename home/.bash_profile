@@ -1,5 +1,3 @@
-echo test
-
 #Set vim-like keybindings in the terminal
 set -o vi
 
