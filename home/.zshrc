@@ -18,6 +18,10 @@ ZSH_THEME="agnoster"
 #Make homeshick work
 fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
 
+# Automatically refresh every day to make sure dotfiles are always backed up
+homeshick refresh 1
+
+
 #Setup git completion
 # if [ -f $HOME/.homesick/repos/dotfiles/.git-completion.bash ]; then
 #	. $HOME/.homesick/repos/dotfiles/.git-completion.bash
