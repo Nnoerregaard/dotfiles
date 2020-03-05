@@ -17,16 +17,7 @@ ZSH_THEME="agnoster"
 
 #Make homeshick work
 fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
-
-# Automatically refresh every day to make sure dotfiles are always backed up
 homeshick refresh 1
-
-
-#Setup git completion
-# if [ -f $HOME/.homesick/repos/dotfiles/.git-completion.bash ]; then
-#	. $HOME/.homesick/repos/dotfiles/.git-completion.bash
-# fi
-#
 
 #Setup nvm
 export NVM_DIR="$HOME/.nvm"
@@ -96,6 +87,13 @@ source $ZSH/oh-my-zsh.sh
 bindkey -v
 bindkey -s 'jk' '\e'
 
+# Convinience aliases
+alias es='expo start'
+alias ys='yarn start'
+alias y='yarn'
+alias tx='tmuxinator'
+alias c=clear
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -124,5 +122,3 @@ bindkey -s 'jk' '\e'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-fpath=($HOME/.homesick/repos/homeshick/completions $fpath)

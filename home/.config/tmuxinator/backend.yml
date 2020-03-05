@@ -1,0 +1,71 @@
+# /Users/niklasnorregaard/.config/tmuxinator/backend.yml
+
+name: backend
+root: ~/
+
+# Optional tmux socket
+# socket_name: foo
+
+# Note that the pre and post options have been deprecated and will be replaced by
+# project hooks.
+
+# Project hooks
+# Runs on project start, always
+# on_project_start: command
+# Run on project start, the first time
+# on_project_first_start: command
+# Run on project start, after the first time
+# on_project_restart: command
+# Run on project exit ( detaching from tmux session )
+# on_project_exit: command
+# Run on project stop
+# on_project_stop: command
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+# startup_window: editor
+
+# Specifies (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
+# startup_pane: 1
+
+# Controls whether the tmux session should be attached to automatically. Defaults to true.
+# attach: false
+
+windows:
+  - backend:
+      root: ~/Documents/work/brandheroes-backend-gql
+      layout: 69ea,238x64,0,0[238x32,0,0,6,238x31,0,33{119x31,0,33[119x25,0,33,13,119x5,0,59,47],118x31,120,33[118x14,120,33,33,118x16,120,48{67x16,120,48,34,50x16,188,48,35}]}]
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
+      panes:
+        - nvim
+        -
+        - ~/ngrok http 4000
+        - yarn start
+        - cd ~/Documents/work/search-cache-maintainer && yarn start
+        - cd ~/Documents/work/currency && yarn redis:up
+  - seeding:
+      root: ~/Documents/work/brandheroes-seed-modifier-cli
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
+      panes:
+        -
+  - brandheroes-shared:
+      root: ~/Documents/work/brandheroes-shared-project
+      layout: ce42,238x64,0,0[238x32,0,0,45,238x31,0,33,46]
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
+      panes:
+        - nvim
+        -

@@ -289,7 +289,9 @@ let g:rustfmt_autosave = 1
 " Easy copy to clipboard 
 :nnoremap cy "*y
 :nnoremap cyy "*yy
+:nnoremap cY "*Y
 :nnoremap cp "*p
+:nnoremap cP "*P
 
 " Easy save
 :nnoremap <leader>s :w<CR>
