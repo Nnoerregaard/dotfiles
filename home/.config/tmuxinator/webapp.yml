@@ -41,7 +41,7 @@ name: webapp
 windows:
   - webapp:
       root: ~/Documents/work/brandheroes-webapp-v2/
-      layout: main-horizontal
+      layout: 9c18,238x64,0,0[238x37,0,0,1,238x26,0,38{118x26,0,38,3,119x26,119,38,4}]
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
