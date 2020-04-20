@@ -28,7 +28,7 @@ export NVM_DIR="$HOME/.nvm"
 export ANDROID_SDK_ROOT=/Users/niklasnorregaard/Library/Android/sdk
 
 # Set up the path to include everything I need from Python to nvim to binaries in various locations. Remember to clean this up from time to time!
-export PATH=$HOME/bin:$HOME/.cargo/bin:/usr/local/bin:/usr/local/bin/nvim-osx64/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/$HOME/.homesick/repos/homeshick/bin:$ANDROID_SDK_ROOT/emulator:$ANDROID_SDK_ROOT/tools/bin:$PATH
+export PATH=$HOME/bin:$HOME/.cargo/bin:/usr/local/bin:/usr/local/bin/nvim-osx64/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/$HOME/.homesick/repos/homeshick/bin:$ANDROID_SDK_ROOT/emulator:$ANDROID_SDK_ROOT/tools/bin:/usr/local/share/dotnet:$PATH
 
 # Ensure 256 colors works with neovim
 export TERM=screen-256color

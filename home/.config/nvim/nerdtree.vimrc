@@ -5,7 +5,6 @@ map <leader>r :NERDTreeFind<CR>
 
 " Show line numbers in NERDTree and make sure relative ones are used
 let NERDTreeShowLineNumbers=1
-autocmd FileType nerdtree setlocal relativenumber
 
 " Start NERDTree if no files were specified
 autocmd StdinReadPre * let s:std_in=1
