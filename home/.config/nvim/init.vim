@@ -92,7 +92,7 @@ nnoremap gw :<C-u>DeniteCursorWord grep:.<CR>
 
 colorscheme minimalist
 
-let g:coc_global_extensions = [ 'coc-omnisharp' ]
+let g:coc_global_extensions = [ 'coc-omnisharp', 'coc-tsserver', 'coc-eslint', 'coc-vetur' ]
 
 ""DEPENDENCIES
 "source ~/.config/nvim/plugins.vim
