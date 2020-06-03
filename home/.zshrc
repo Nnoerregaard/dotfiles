@@ -1,6 +1,6 @@
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/niklasnorregaard/.oh-my-zsh"
-export MYVIMRC="/Users/niklasnorregaard/.config/nvim/init.vim"
+export ZSH=$HOME/.oh-my-zsh
+export MYVIMRC=$HOME/.config/nvim/init.vim
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -17,15 +17,11 @@ ZSH_THEME="agnoster"
 
 #Make homeshick work
 fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
-homeshick refresh 1
 
 #Setup nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-#Make android work on the terminal. At the moment, I have surrendered to the convinience of using Android Studio
-export ANDROID_SDK_ROOT=/Users/niklasnorregaard/Library/Android/sdk
 
 # Set up the path to include everything I need from Python to nvim to binaries in various locations. Remember to clean this up from time to time!
 export PATH=$HOME/bin:$HOME/.cargo/bin:/usr/local/bin:/usr/local/bin/nvim-osx64/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/$HOME/.homesick/repos/homeshick/bin:$ANDROID_SDK_ROOT/emulator:$ANDROID_SDK_ROOT/tools/bin:/usr/local/share/dotnet:$PATH
