@@ -17,7 +17,7 @@ Plug 'Shougo/denite.nvim'
 Plug 'rking/ag.vim'
 " Autocomplete, linting through eslint (including prettyfier) and other
 " languageserver features
-Plug 'neoclide/coc.nvim'
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 " This is used for syntax highlighting see: https://github.com/peitalin/vim-jsx-typescript
 Plug 'leafgarland/typescript-vim' 
 Plug 'maxmellon/vim-jsx-pretty'
@@ -27,9 +27,8 @@ Plug 'dikiaap/minimalist'
 Plug 'mlaursen/vim-react-snippets'
 " Debugging
 Plug 'puremourning/vimspector'
-" Pug highlighting
-Plug 'dNitro/vim-pug-complete', { 'for': ['jade', 'pug'] }
-
+" Syntax highlighting for vue
+Plug 'posva/vim-vue'
 
 filetype plugin indent on
 "TODO: Customizing syntax highlighting
@@ -267,6 +266,8 @@ set shiftround
 set expandtab
 set tabstop=2 
 set shiftwidth=2
+
+set autoread
 
 set number
 set splitbelow
