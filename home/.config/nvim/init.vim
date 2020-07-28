@@ -29,6 +29,8 @@ Plug 'mlaursen/vim-react-snippets'
 Plug 'puremourning/vimspector'
 " Syntax highlighting for vue
 Plug 'posva/vim-vue'
+" For pug support (syntax highlighting and indentation)
+Plug 'digitaltoad/vim-pug'
 
 filetype plugin indent on
 "TODO: Customizing syntax highlighting
