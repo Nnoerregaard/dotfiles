@@ -1,13 +1,25 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
+# Path your neovim configuration 
 export MYVIMRC=$HOME/.config/nvim/init.vim
+
+# Gets powerlevel10k to use as zsh theme 
+[ ! -d ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k ] && git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
-ZSH_THEME="agnoster"
+ZSH_THEME="powerlevel10k/powerlevel10k"
+POWERLEVEL10K_mode="nerdfont-complete"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -67,14 +79,19 @@ export PATH=$HOME/bin:$HOME/.cargo/bin:/usr/local/bin:/usr/local/bin/nvim-osx64/
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+# Installs fzf for fuzzy finding
 [ ! -d ~/.fzf ] && git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && yes | ~/.fzf/install
+# Installs zsh autosuggestions for terminal autosuggestions
+[ ! -d ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions ] && git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+# Gets the Hack font for terminal use
+[ ! -f ~/.local/share/fonts/Hack\ Nerd\ Font\ Complete.ttf ] && curl -fLo "Hack Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete.ttf
 
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git fzf)
+plugins=(git fzf zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -86,6 +103,7 @@ bindkey -s 'jk' '\e'
 alias es='expo start'
 alias ys='yarn start'
 alias dr='dotnet run'
+alias nrd='npm run dev'
 alias y='yarn'
 alias tx='tmuxinator'
 alias c=clear
@@ -120,3 +138,6 @@ alias c=clear
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
