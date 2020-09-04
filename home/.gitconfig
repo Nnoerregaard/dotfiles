@@ -1,8 +1,8 @@
 # This is Git's per-user configuration file.
 [user]
 # Please adapt and uncomment the following lines:
-	name = Niklas Nørregaard
-	email = niklas.noerregaard@gmail.com
+	name = Niklas Moss
+	email = nin@envidan.dk
 [merge]
 	tool = nvim
 [mergetool]

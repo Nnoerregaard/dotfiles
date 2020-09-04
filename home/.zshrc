@@ -9,6 +9,8 @@ fi
 export ZSH=$HOME/.oh-my-zsh
 # Path your neovim configuration 
 export MYVIMRC=$HOME/.config/nvim/init.vim
+# Set correct ASPNET Core environment
+export ASPNETCORE_ENVIRONMENT=Local
 
 # Gets powerlevel10k to use as zsh theme 
 [ ! -d ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k ] && git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
