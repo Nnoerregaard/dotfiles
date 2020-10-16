@@ -93,21 +93,19 @@ export PATH=$HOME/bin:$HOME/.cargo/bin:/usr/local/bin:/usr/local/bin/nvim-osx64/
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git fzf zsh-autosuggestions)
+plugins=(git fzf zsh-autosuggestions tmuxinator)
 
 source $ZSH/oh-my-zsh.sh
 
 # Use vi keybindings in the termianl because they are awesome!
 bindkey -v
+# use jk as alias for escape, to enter normal mode
 bindkey -s 'jk' '\e'
 
 # Convinience aliases
-alias es='expo start'
-alias ys='yarn start'
 alias dr='dotnet run'
 alias nrd='npm run dev'
 alias y='yarn'
-alias tx='tmuxinator'
 alias c=clear
 
 # User configuration

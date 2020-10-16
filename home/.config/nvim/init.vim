@@ -23,7 +23,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
 " The color scheme I currently use
 Plug 'dikiaap/minimalist'
-" Snippets
+" Snippets for react
 Plug 'mlaursen/vim-react-snippets'
 " Debugging
 Plug 'puremourning/vimspector'
@@ -291,14 +291,17 @@ let g:rustfmt_autosave = 1
 :nnoremap <leader>O O<esc> 
 
 " Make working with windows easier  <Ctrl>ws
-:nnoremap <leader>hs :wincmd s<CR>
-:nnoremap <leader>vs :wincmd v<CR> 
+" :nnoremap <leader>| :wimcmd s<CR>
+:nnoremap <leader><Bar> :wincmd v<CR>
+:nnoremap <leader>_ :wincmd s<CR>
+:nnoremap <leader>x :wincmd q<CR>
+:nnoremap <leader>= :wincmd =<CR>
 :nnoremap <leader>w :wincmd w<CR>
-:nnoremap <leader>q :wincmd q<CR>
 :nnoremap <leader>h :wincmd h<CR>
 :nnoremap <leader>l :wincmd l<CR>
 :nnoremap <leader>j :wincmd j<CR>
 :nnoremap <leader>k :wincmd k<CR>
+
 
 " Easy copy to clipboard 
 :nnoremap cy "*y
@@ -327,8 +330,6 @@ let g:rustfmt_autosave = 1
 " Easier switching back and forth between buffers 
 :nnoremap <leader>n :bn<CR>
 :nnoremap <leader>p :bp<CR>
-:nnoremap <leader>d :bd<CR>
-:nnoremap <leader>l :ls<CR>
 
 " Easier access to normal mode
 :inoremap jk <esc>
@@ -357,3 +358,4 @@ let g:rustfmt_autosave = 1
 
 " Abbreviations
 :iabbrev co const
+:iabbrev im import
