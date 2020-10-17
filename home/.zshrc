@@ -11,6 +11,8 @@ export ZSH=$HOME/.oh-my-zsh
 export MYVIMRC=$HOME/.config/nvim/init.vim
 # Set correct ASPNET Core environment
 export ASPNETCORE_ENVIRONMENT=Local
+# Set the editor to neovim
+export EDITOR=nvim
 
 # Gets powerlevel10k to use as zsh theme 
 [ ! -d ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k ] && git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
@@ -107,6 +109,7 @@ alias dr='dotnet run'
 alias nrd='npm run dev'
 alias y='yarn'
 alias c=clear
+alias tx-tmuxinator
 
 # User configuration
 
