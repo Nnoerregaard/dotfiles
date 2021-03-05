@@ -31,6 +31,8 @@ Plug 'puremourning/vimspector'
 Plug 'posva/vim-vue'
 " For pug support (syntax highlighting and indentation)
 Plug 'digitaltoad/vim-pug'
+" Tmux config file syntax highlighting
+Plug 'tmux-plugins/vim-tmux'
 
 filetype plugin indent on
 "TODO: Customizing syntax highlighting
