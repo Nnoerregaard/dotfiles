@@ -14,7 +14,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'Shougo/denite.nvim'
 " The search engine itself. NB! Requires 'the_silver_searcher to be installed
 " (see GitHub Repo)
-Plug 'rking/ag.vim'
+Plug 'mileszs/ack.vim'
 " Autocomplete, linting through eslint (including prettyfier) and other
 " languageserver features
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
@@ -84,20 +84,38 @@ let s:denite_options = {'default' : {
 \ 'highlight_matched_range': 'Normal'
 \ }}
 
-call denite#custom#var('file/rec', 'command',
-\ ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', ''])
+call denite#custom#alias('source', 'file/rec/git', 'file/rec')
+call denite#custom#var('file/rec/git', 'command',
+\ ['git', 'ls-files', '-co', '--exclude-standard'])
 
-" Ag command on grep source
-call denite#custom#var('grep', 'command', ['ag'])
-call denite#custom#var('grep', 'default_opts',
-		\ ['-i', '--vimgrep'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', [])
-call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'final_opts', [])
+" Using Ack with vim with ag as the underline search engine
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
+" Ack command on grep source
+call denite#custom#var('grep', {
+\ 'command': ['ack'],
+\ 'default_opts': [
+\   '--ackrc', $HOME.'/.ackrc', '-H', '-i',
+\   '--nopager', '--nocolor', '--nogroup', '--column'
+\ ],
+\ 'recursive_opts': [],
+\ 'pattern_opt': ['--match'],
+\ 'separator': ['--'],
+\ 'final_opts': [],
+\ })
+
+" call denite#custom#var('grep', 'command', ['ag'])
+" call denite#custom#var('grep', 'default_opts',
+"		\ ['-i', '--vimgrep'])
+" call denite#custom#var('grep', 'recursive_opts', [])
+" call denite#custom#var('grep', 'pattern_opt', [])
+" call denite#custom#var('grep', 'separator', ['--'])
+" call denite#custom#var('grep', 'final_opts', [])
 
 nmap g; :Denite buffer -split=floating -winrow=1<CR>
-nmap gp :Denite file/rec -split=floating -winrow=1<CR>i
+nmap gp :Denite `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'` -split=floating -winrow=1<CR>i
+nnoremap <silent> <C-p> :<C-u>Denite
+\ `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'`<CR>
 nnoremap gf :<C-u>Denite grep:. -no-empty<CR>
 nnoremap gw :<C-u>DeniteCursorWord grep:.<CR>
 
