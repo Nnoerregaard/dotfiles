@@ -23,8 +23,8 @@ Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
 " The color scheme I currently use
 Plug 'dikiaap/minimalist'
-" Snippets for react
-Plug 'mlaursen/vim-react-snippets'
+" Ultisnips for snippets
+Plug 'SirVer/ultisnips'
 " Debugging
 Plug 'puremourning/vimspector'
 " Syntax highlighting for vue
@@ -39,6 +39,9 @@ filetype plugin indent on
 
 " autocmd BufRead *.tsx set syntax=typescript
 call plug#end()
+
+" Use another expand trigger than tab as that is for  
+" let g:UltiSnipsExpandTrigger='<c-tab>'
 
 " Debugger - Customize later!
 let g:vimspector_enable_mappings = 'HUMAN'
@@ -84,38 +87,37 @@ let s:denite_options = {'default' : {
 \ 'highlight_matched_range': 'Normal'
 \ }}
 
+" Define file/rec such that for git repos we use git ls-files
 call denite#custom#alias('source', 'file/rec/git', 'file/rec')
 call denite#custom#var('file/rec/git', 'command',
 \ ['git', 'ls-files', '-co', '--exclude-standard'])
 
 " Using Ack with vim with ag as the underline search engine
-let g:ackprg = 'ag --nogroup --nocolor --column'
+"
+let g:ackprg = 'ag --vimgrep --smart-case'                                                   
+cnoreabbrev ag Ack                                                                           
+cnoreabbrev aG Ack                                                                           
+cnoreabbrev Ag Ack                                                                           
+cnoreabbrev AG Ack
 
-" Ack command on grep source
+" Change file/rec for ag
+call denite#custom#var('file/rec/ordinary', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+
+" Ag command on grep source
 call denite#custom#var('grep', {
-\ 'command': ['ack'],
-\ 'default_opts': [
-\   '--ackrc', $HOME.'/.ackrc', '-H', '-i',
-\   '--nopager', '--nocolor', '--nogroup', '--column'
-\ ],
+\ 'command': ['ag'],
+\ 'default_opts': ['-i'],
 \ 'recursive_opts': [],
-\ 'pattern_opt': ['--match'],
+\ 'pattern_opt': [],
 \ 'separator': ['--'],
 \ 'final_opts': [],
 \ })
 
-" call denite#custom#var('grep', 'command', ['ag'])
-" call denite#custom#var('grep', 'default_opts',
-"		\ ['-i', '--vimgrep'])
-" call denite#custom#var('grep', 'recursive_opts', [])
-" call denite#custom#var('grep', 'pattern_opt', [])
-" call denite#custom#var('grep', 'separator', ['--'])
-" call denite#custom#var('grep', 'final_opts', [])
-
 nmap g; :Denite buffer -split=floating -winrow=1<CR>
+" nmap gp :Denite `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'` -split=floating -winrow=1<CR>i
 nmap gp :Denite `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'` -split=floating -winrow=1<CR>i
-nnoremap <silent> <C-p> :<C-u>Denite
-\ `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'`<CR>
+nnoremap <silent> <C-p> :<C-u>Denite `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'` 
+\<CR>
 nnoremap gf :<C-u>Denite grep:. -no-empty<CR>
 nnoremap gw :<C-u>DeniteCursorWord grep:.<CR>
 
