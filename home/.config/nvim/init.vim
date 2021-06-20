@@ -23,8 +23,6 @@ Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
 " The color scheme I currently use
 Plug 'dikiaap/minimalist'
-" Ultisnips for snippets
-Plug 'SirVer/ultisnips'
 " Debugging
 Plug 'puremourning/vimspector'
 " Syntax highlighting for vue
@@ -40,11 +38,10 @@ filetype plugin indent on
 " autocmd BufRead *.tsx set syntax=typescript
 call plug#end()
 
-" Use another expand trigger than tab as that is for  
-" let g:UltiSnipsExpandTrigger='<c-tab>'
-
 " Debugger - Customize later!
 let g:vimspector_enable_mappings = 'HUMAN'
+
+nnoremap <Plug>VimspectorBalloonEval <C-CR>
 
 " Enable deoplete at startup
 " let g:deoplete#enable_at_startup = 1
@@ -123,7 +120,10 @@ nnoremap gw :<C-u>DeniteCursorWord grep:.<CR>
 
 colorscheme minimalist
 
-let g:coc_global_extensions = [ 'coc-omnisharp', 'coc-tsserver', 'coc-eslint', 'coc-vetur' ]
+let g:coc_global_extensions = [ 'coc-omnisharp', 'coc-tsserver', 'coc-eslint', 'coc-vetur', 'coc-snippets', 'coc-json' ]
+
+" Use <leader>x for convert visual selected code to snippet
+xmap <leader>x  <Plug>(coc-convert-snippet)
 
 ""DEPENDENCIES
 "source ~/.config/nvim/plugins.vim
@@ -152,6 +152,13 @@ set shortmess+=c
 
 " always show signcolumns
 set signcolumn=yes
+
+" trigger `autoread` when files changes on disk. NB! This comes from https://www.reddit.com/r/neovim/comments/f0qx2y/automatically_reload_file_if_contents_changed/
+set autoread
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
+" notification after file change
+autocmd FileChangedShellPost *
+  \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
