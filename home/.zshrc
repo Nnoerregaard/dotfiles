@@ -116,6 +116,8 @@ alias nrd='npm run dev'
 alias y='yarn'
 alias c=clear
 alias tx-tmuxinator
+alias k=kubectl
+alias gc=gcloud
 
 # User configuration
 
@@ -150,3 +152,9 @@ alias tx-tmuxinator
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/niklasmoss/.google_cloud/path.zsh.inc' ]; then . '/Users/niklasmoss/.google_cloud/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/niklasmoss/.google_cloud/completion.zsh.inc' ]; then . '/Users/niklasmoss/.google_cloud/completion.zsh.inc'; fi

@@ -84,21 +84,16 @@ let s:denite_options = {'default' : {
 \ 'highlight_matched_range': 'Normal'
 \ }}
 
-" Define file/rec such that for git repos we use git ls-files
-call denite#custom#alias('source', 'file/rec/git', 'file/rec')
-call denite#custom#var('file/rec/git', 'command',
-\ ['git', 'ls-files', '-co', '--exclude-standard'])
-
 " Using Ack with vim with ag as the underline search engine
 "
-let g:ackprg = 'ag --vimgrep --smart-case'                                                   
+let g:ackprg = 'ag --vimgrep --smart-case -U'                                                   
 cnoreabbrev ag Ack                                                                           
 cnoreabbrev aG Ack                                                                           
 cnoreabbrev Ag Ack                                                                           
 cnoreabbrev AG Ack
 
 " Change file/rec for ag
-call denite#custom#var('file/rec/ordinary', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+call denite#custom#var('file/rec', 'command', ['ag', '--follow', 'U', '--nocolor', '--nogroup', '-g', ''])
 
 " Ag command on grep source
 call denite#custom#var('grep', {
@@ -112,8 +107,8 @@ call denite#custom#var('grep', {
 
 nmap g; :Denite buffer -split=floating -winrow=1<CR>
 " nmap gp :Denite `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'` -split=floating -winrow=1<CR>i
-nmap gp :Denite `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'` -split=floating -winrow=1<CR>i
-nnoremap <silent> <C-p> :<C-u>Denite `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'` 
+nmap gp :Denite file/rec -split=floating -winrow=1<CR>i
+nnoremap <silent> <C-p> :<C-u>Denite file/rec 
 \<CR>
 nnoremap gf :<C-u>Denite grep:. -no-empty<CR>
 nnoremap gw :<C-u>DeniteCursorWord grep:.<CR>
