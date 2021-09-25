@@ -108,7 +108,7 @@ call denite#custom#var('grep', {
 nmap g; :Denite buffer -split=floating -winrow=1<CR>
 " nmap gp :Denite `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'` -split=floating -winrow=1<CR>i
 nmap gp :Denite file/rec -split=floating -winrow=1<CR>i
-nnoremap <silent> <C-p> :<C-u>Denite file/rec 
+noremap <silent> <C-p> :<C-u>Denite file/rec 
 \<CR>
 nnoremap gf :<C-u>Denite grep:. -no-empty<CR>
 nnoremap gw :<C-u>DeniteCursorWord grep:.<CR>
@@ -326,6 +326,12 @@ let g:rustfmt_autosave = 1
 :nnoremap <leader>j :wincmd j<CR>
 :nnoremap <leader>k :wincmd k<CR>
 
+" Getting windows to be full screen using tabs and working with tabs in
+" general
+:nnoremap <leader>ts :tab split<CR>
+:nnoremap <leader>tc :tabc<CR>
+:nnoremap <leader>t gt 
+:nnoremap <leader>T gT
 
 " Easy copy to clipboard 
 :nnoremap cy "*y

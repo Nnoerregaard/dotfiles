@@ -116,8 +116,14 @@ alias nrd='npm run dev'
 alias y='yarn'
 alias c=clear
 alias tx-tmuxinator
-alias k=kubectl
+
 alias gc=gcloud
+alias k=kubectl
+alias kdev='k config use-context gke_customer-pri-dev-e206_europe-west4_bsonecustomer03-dev'
+alias ktest='k config use-context gke_customer-pri-dev-e206_europe-west4_bsonecustomer03-test'
+alias kprod='k config use-context gke_customer-pri-prod-1817_europe-west4_bsonecustomer03-prod'
+
+alias bsvpn='sudo openconnect -u ext.niklas.moss --protocol=anyconnect external.bestseller.com'
 
 # User configuration
 
@@ -135,6 +141,8 @@ alias gc=gcloud
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
+
+
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
