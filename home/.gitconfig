@@ -18,3 +18,5 @@
 	insteadOf = https://bitbucket.org/
 [init]
 	templatedir = /Users/niklasnorregaard/.git-templates
+[pull]
+	rebase = false

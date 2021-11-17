@@ -113,6 +113,7 @@ bindkey -s 'jk' '\e'
 # Convinience aliases
 alias dr='dotnet run'
 alias nrd='npm run dev'
+alias nrs='npm run start'
 alias y='yarn'
 alias c=clear
 alias tx-tmuxinator
