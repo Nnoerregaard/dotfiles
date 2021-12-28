@@ -40,13 +40,14 @@ fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Setup nvm on Mac OS X with homebrew
+# Set up the path to include everything I need from Python to nvim to binaries in various locations. Remember to clean this up from time to time!
+export ANDROID_PLATFORM_TOOLS='/Users/niklasmoss/Library/Android/sdk/platform-tools/' 
+export PATH=$HOME/bin:$HOME/.cargo/bin:/usr/local/bin:/usr/local/bin/nvim-osx64/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/$HOME/.homesick/repos/homeshick/bin:$ANDROID_SDK_ROOT/emulator:$ANDROID_SDK_ROOT/tools/bin:/usr/local/share/dotnet:/opt/homebrew/bin:$ANDROID_PLATFORM_TOOLS:$HOME/.sonar-scanner/bin:$PATH
+
+# NB! NVM needs to be the last command to modify the path, otherwise, it'll always default to system, see https://github.com/nvm-sh/nvm/issues/1184 
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-# Set up the path to include everything I need from Python to nvim to binaries in various locations. Remember to clean this up from time to time!
-export ANDROID_PLATFORM_TOOLS='/Users/niklasmoss/Library/Android/sdk/platform-tools/' 
-export PATH=$HOME/bin:$HOME/.cargo/bin:/usr/local/bin:/usr/local/bin/nvim-osx64/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/$HOME/.homesick/repos/homeshick/bin:$ANDROID_SDK_ROOT/emulator:$ANDROID_SDK_ROOT/tools/bin:/usr/local/share/dotnet:/opt/homebrew/bin:$ANDROID_PLATFORM_TOOLS:$PATH
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -114,7 +115,15 @@ bindkey -s 'jk' '\e'
 alias dr='dotnet run'
 alias nrd='npm run dev'
 alias nrs='npm run start'
+alias ni='npm install'
+alias yd='yarn dev'
+alias ys='yarn start'
 alias y='yarn'
+alias es='expo start'
+alias clean='rm -rf node_modules package-lock.json yarn.lock'
+# This is seriously awesome! Creates a GitHub PR from your current branch towards master and copies the link of it to your clipboard 
+alias pr='gh pr create --fill | pbcopy'
+alias diff="git diff ':!*.lock*'"
 alias c=clear
 alias tx-tmuxinator
 
@@ -125,6 +134,10 @@ alias ktest='k config use-context gke_customer-pri-dev-e206_europe-west4_bsonecu
 alias kprod='k config use-context gke_customer-pri-prod-1817_europe-west4_bsonecustomer03-prod'
 
 alias bsvpn='sudo openconnect -u ext.niklas.moss --protocol=anyconnect external.bestseller.com'
+
+# Make it easy to edit and source configuration
+alias ec='nvim ~/.zshrc'
+alias sc='source ~/.zshrc'
 
 # User configuration
 
