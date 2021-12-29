@@ -1,0 +1,79 @@
+# /Users/niklasmoss/.config/tmuxinator/brandheroes.yml
+
+name: Brandheroes
+root: ~/Documents/code/Brandheroes/
+
+# Optional tmux socket
+# socket_name: foo
+
+# Note that the pre and post options have been deprecated and will be replaced by
+# project hooks.
+
+# Project hooks
+
+# Runs on project start, always
+# on_project_start: command
+
+# Run on project start, the first time
+# on_project_first_start: command
+
+# Run on project start, after the first time
+# on_project_restart: command
+
+# Run on project exit ( detaching from tmux session )
+# on_project_exit: command
+
+# Run on project stop
+# on_project_stop: command
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+# startup_window: editor
+
+# Specifies (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
+# startup_pane: 1
+
+# Controls whether the tmux session should be attached to automatically. Defaults to true.
+# attach: false
+
+windows:
+  - webapp:
+      layout: acb3,374x92,0,0[374x39,0,0,19,374x26,0,40,24,374x25,0,67{125x25,0,67,25,129x25,126,67,26,118x25,256,67,27}]
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
+      panes:
+        - cd webapp && nvim
+        - cd webapp && ggl && ls
+        - cd webapp && npm run start
+        - cd webapp && npm run test
+        - cd webapp && npm run tsw
+  - mobile_app: 
+      layout: acb3,374x92,0,0[374x39,0,0,19,374x26,0,40,24,374x25,0,67{125x25,0,67,25,129x25,126,67,26,118x25,256,67,27}]
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
+      panes:
+        - cd mobile_app && nvim
+        - cd mobile_app && ggl && ls
+        - cd mobile_app && expo start
+        - cd mobile_app && npm run test:watch
+        - cd mobile_app && npm run tsw
+  - backend: 
+      layout: 48e1,210x98,0,0[210x49,0,0,10,210x24,0,50,11,210x23,0,75{105x23,0,75,12,104x23,106,75,13}]
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
+      panes:
+        - cd backend && nvim
+        - cd backend && ggl && ls
+        - cd mobile_app && npm run test:watch
+        - cd mobile_app && npm run tsw
