@@ -75,5 +75,5 @@ windows:
       panes:
         - cd backend && nvim
         - cd backend && ggl && ls
-        - cd mobile_app && npm run test:watch
-        - cd mobile_app && npm run tsw
+        - cd backend && npm run test:watch
+        - cd backend && npm run tsw
