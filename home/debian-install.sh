@@ -27,7 +27,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | zsh
 nvm install 16.13.1
 
 # Expo
-npm install -g expo
+npm install -g expo-cli
 
 # Yarn
 npm install -g yarn
