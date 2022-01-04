@@ -35,7 +35,7 @@ POWERLEVEL10K_mode="nerdfont-complete"
 fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
 
 # Refresh homeshick on every starthome
-homeshick --quiet refresh
+homeshick refresh dotfiles
 
 # Setup nvm on Mac OS X with homebrew
 # Set up the path to include everything I need from Python to nvim to binaries in various locations. Remember to clean this up from time to time!
