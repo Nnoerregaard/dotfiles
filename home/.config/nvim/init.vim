@@ -41,7 +41,10 @@ call plug#end()
 " Debugger - Customize later!
 let g:vimspector_enable_mappings = 'HUMAN'
 
-nnoremap <Plug>VimspectorBalloonEval <C-CR>
+" for normal mode - the word under the cursor
+nmap <leader>di <Plug>VimspectorBalloonEval
+" for visual mode, the visually selected text
+xmap <leader>di <Plug>VimspectorBalloonEval
 
 " Enable deoplete at startup
 " let g:deoplete#enable_at_startup = 1

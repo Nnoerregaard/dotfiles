@@ -6,6 +6,11 @@ apt install -y git
 # Curl
 apt install -y curl
 
+# Ngrok
+curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null
+echo "deb https://ngrok-agent.s3.amazonaws.com buster main" | sudo tee /etc/apt/sources.list.d/ngrok.list
+sudo apt update && sudo apt install ngrok   
+
 # ZSH
 apt install -y zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -44,7 +49,10 @@ apt install -y gh
 gh config set -h github.com git_protocol ssh
 
 # Login to GitHub CLI using information from lastpass  
-lpass show -c --notes --sync=now "Github PAT" | gh auth login --with-token
+gh auth login --with-token $(lpass show --notes --sync=now "Github PAT")
+
+# Login to ngrok using information from lastpass
+ngrok authtoken $(lpass show --notes --sync=now "Ngrok PAT")
 
 # Generate SSH key and add it to GitHub
 ssh-keygen -t ed25519 -C "Ubuntu PC"
@@ -74,6 +82,6 @@ mkdir Houe && cd Houe && gh repo clone Nnoerregaard/MyTrash && npm install && cd
 mkdir Brandheroes && cd Brandheroes && # NB! This will fail until you can set up an SSH key for Bitbucket automatically or Brandheroes moves to GitHub)
       git clone git@bitbucket.org:brandheroes/brandheroes-webapp-v2.git webapp/ && cd webapp && yarn && cd .. &&
       git clone git@bitbucket.org:brandheroes/brandheroesapp.git mobile_app/ && cd mobile_app && yarn && cd .. && 
-      git clone git@bitbucket.org:brandheroes/brandheroes-backend-gql.git backend/ && cd backend && yarn && cd ..
+      git clone git@bitbucket.org:brandheroes/brandheroes-backend-gql.git backend/ && cd backend && yarn && yarn prisma deploy cd ..
 
 echo "Congratulations! Your new Debian based machine should now be set up and ready to go. Restart your terminal to start enjoying your new development environment"
