@@ -34,9 +34,6 @@ POWERLEVEL10K_mode="nerdfont-complete"
 #Make homeshick work
 fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
 
-# Refresh homeshick on every starthome
-homeshick refresh dotfiles
-
 # Setup nvm on Mac OS X with homebrew
 # Set up the path to include everything I need from Python to nvim to binaries in various locations. Remember to clean this up from time to time!
 export ANDROID_PLATFORM_TOOLS='/Users/niklasmoss/Library/Android/sdk/platform-tools/' 
