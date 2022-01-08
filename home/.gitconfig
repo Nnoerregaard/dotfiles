@@ -2,7 +2,7 @@
 [user]
 # Please adapt and uncomment the following lines:
 	name = Niklas Moss
-	email = nin@envidan.dk
+	email = niklas@themossconcept.com
 [merge]
 	tool = nvim
 [mergetool]
