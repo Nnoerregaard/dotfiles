@@ -58,13 +58,15 @@ lpass show --notes 5561560319192977980 | gh auth login --with-token
 # Intall homeshick to access your configuration files
 su niklas
 yay -Sy homeshick-git
-exit
 
+# Since we are doing the cloning and linking in root, 
+# we need to be in root to access the files in homeshick
+# which I'm not sure is what we want
 homeshick clone Nnoerregaard/dotfiles
 homeshick link
 
 yay -Sy zsh
-yay -Sy oh-my-zsh-git
+curl -L http://install.ohmyz.sh | sh
 
 # Use zsh instead of bash
 zsh
@@ -72,10 +74,20 @@ zsh
 # Set up node (needed for neovim)
 yay -Sy nvm
 source /usr/share/nvm/init-nvm.sh # Consider putting this in the .zshrc so it's always sourced
-nvm install
+nvm install --lts
+npm install -g neovim
 
 # Set up Python (needed for neovim)
-yay -Sy python
+yay -Sy python-pynvim
+
+# Set up Ruby (needed for neovim)
+yay -Sy ruby-neovim
+
+# Set up perl (needed for neovim)
+yay -Sy perl
+
+# Set up tmux which also includes clipboard tools
+yay -Sy tmux 
 
 # This is to make VimPlug work.
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
@@ -84,5 +96,7 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 # Set up neovim
 yay -Sy neovim
 # Remember to run PlugInstall and CocInstall on the first neovim run. This hasn't been tested yet!
-nvim --headline +PlugInstall +CocInstall +q  
+nvim --headless +PlugInstall +CocInstall +q  
 export EDITOR=nvim
+
+
