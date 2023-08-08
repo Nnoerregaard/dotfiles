@@ -11,13 +11,18 @@ pacman -Sy sed
 # Add user that can work with sudo
 useradd -m -G wheel -s /bin/bash niklas
 passwd niklas
-sed -i '85s/# //g' /etc/sudoers # Add wheel users with passwords to sudoers 
+# NB! This line has been known to change across different versions of Arch. If you get an 
+# erro about the user not being in sudoers, check the file manually.
+# This line number should work with the Arch version that is used in the Arch Linux
+# docker image with image ID 1105a6ef0052. Other known line numbers to work include 85
+sed -i '89s/# //g' /etc/sudoers # Add wheel users with passwords to sudoers 
 visudo -c # Check that the sudoers file is still valid
 
 # Install yay to access all community packages
 pacman -Sy base-devel
 pacman -Sy go
 cd /opt
+# git clone https://aur.archlinux.org/yay-bin.git
 git clone https://aur.archlinux.org/yay.git
 chown niklas yay/
 su niklas
