@@ -80,12 +80,6 @@ npm install -g neovim
 # Set up Python (needed for neovim)
 yay -Sy python-pynvim
 
-# Set up Ruby (needed for neovim)
-yay -Sy ruby-neovim
-
-# Set up perl (needed for neovim)
-yay -Sy perl
-
 # Set up tmux which also includes clipboard tools
 yay -Sy tmux 
 
@@ -93,10 +87,14 @@ yay -Sy tmux
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
+# Needed to make Denite work. Consider upgrading to ddu at some point
+yay -Sy the_silver_searcher
+
 # Set up neovim
 yay -Sy neovim
 # Remember to run PlugInstall and CocInstall on the first neovim run. This hasn't been tested yet!
-nvim --headless +PlugInstall +CocInstall +q  
+nvim --headless +'PlugInstall --sync' +qa  
+nvim --headless +CocInstall +qa
 export EDITOR=nvim
 
 
