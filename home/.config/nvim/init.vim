@@ -305,6 +305,10 @@ let g:syntastic_typescript_checkers = ['tslint', 'tsc']
 let g:syntastic_cs_checkers = ['code_checker']
 let g:rustfmt_autosave = 1
 
+" Disable providers we don't need
+let g:loaded_ruby_provider = 0
+let g:loaded_perl_provider = 0
+
 " Clear highlighting after search
 :nnoremap <leader>c :noh<CR>
 
