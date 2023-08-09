@@ -20,31 +20,25 @@ visudo -c # Check that the sudoers file is still valid
 
 # Install yay to access all community packages
 pacman -Sy base-devel
-pacman -Sy go
 cd /opt
-# git clone https://aur.archlinux.org/yay-bin.git
-git clone https://aur.archlinux.org/yay.git
-chown niklas yay/
+git clone https://aur.archlinux.org/yay-bin.git
+chown niklas yay-bin/
 su niklas
-cd yay
-git config --global --add safe.directory /opt/yay
+cd yay-bin
+git config --global --add safe.directory /opt/yay-bin
 makepkg -si
 
 # Go home again
 cd ~
 
 # Update all packages using yay
-# yay -Syu --devel --timeupdate
+yay -Syu --devel --timeupdate
 
 # Install pinentry to remember the lastpass master password
 yay -Sy pinentry
 
 # Intall lastpass and lastpass CLI to be able to access password and access tokens
 yay -Sy lastpass-cli # Maybe we need to install lastpass as well but I'm not sure
-
-# We need to be root in order to login to lastpass and use it
-exit
-lpass login niklas.noerregaard@gmail.com
 
 # Generate SSH key to be able to work with SSH later on. Maybe, we should wait until we actually need it
 yay -Sy openssh
@@ -53,28 +47,27 @@ eval "$(ssh-agent -s)"
 
 # Install GitHub CLI and authenticate to gain access to your repos including your dotfiles
 yay -Sy github-cli
-lpass show --notes 5561560319192977980 | gh auth login --with-token
+# We need to be root in order to login to lastpass and use it
+sudo lpass show --notes 5561560319192977980 | gh auth login --with-token
 
 # Intall homeshick to access your configuration files
-su niklas
 yay -Sy homeshick-git
 
-# Since we are doing the cloning and linking in root, 
-# we need to be in root to access the files in homeshick
-# which I'm not sure is what we want
 homeshick clone Nnoerregaard/dotfiles
 homeshick link
 
 yay -Sy zsh
-curl -L http://install.ohmyz.sh | sh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Use zsh instead of bash
 zsh
+source ~/.zshrc
 
 # Set up node (needed for neovim)
 yay -Sy nvm
 source /usr/share/nvm/init-nvm.sh # Consider putting this in the .zshrc so it's always sourced
 nvm install --lts
+npm install -g npm # Update npm to latest version
 npm install -g neovim
 
 # Set up Python (needed for neovim)
@@ -90,11 +83,18 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 # Needed to make Denite work. Consider upgrading to ddu at some point
 yay -Sy the_silver_searcher
 
+# We want to use tmux anyway and entering it is the easiest 
+# way to get clipboard support without a GUI 
+tmux
+
 # Set up neovim
 yay -Sy neovim
 # Remember to run PlugInstall and CocInstall on the first neovim run. This hasn't been tested yet!
 nvim --headless +'PlugInstall --sync' +qa  
 nvim --headless +CocInstall +qa
+# This last one is needed to make Denite work
+nvim --headless +UpdateRemotePlugins +qa
+
 export EDITOR=nvim
 
 
