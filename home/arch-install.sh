@@ -57,7 +57,7 @@ homeshick clone Nnoerregaard/dotfiles
 homeshick link
 
 yay -Sy zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --keep-zshrc"
 
 # Use zsh instead of bash
 zsh
