@@ -1,12 +1,12 @@
 # Update pacman
-pacman -Sy
+pacman -Sy --noconfirm
 
 # Install git to do setup and also just for general development
-pacman -Sy git
+pacman -Sy --noconfirm git
 # Install sudo to check the validity of the sudoer file after modification
-pacman -Sy sudo
+pacman -Sy --noconfirm sudo
 # Install sed to modify the sudoer file (and other files) in a non-interactive way
-pacman -Sy sed
+pacman -Sy --noconfirm sed
 
 # Add user that can work with sudo
 useradd -m -G wheel -s /bin/bash niklas
@@ -19,76 +19,68 @@ sed -i '89s/# //g' /etc/sudoers # Add wheel users with passwords to sudoers
 visudo -c # Check that the sudoers file is still valid
 
 # Install yay to access all community packages
-pacman -Sy base-devel
+pacman -Sy --noconfirm base-devel
 cd /opt
 git clone https://aur.archlinux.org/yay-bin.git
 chown niklas yay-bin/
-su niklas
 cd yay-bin
 git config --global --add safe.directory /opt/yay-bin
-makepkg -si
+su niklas --session-command "makepkg -si --noconfirm"
 
 # Go home again
 cd ~
 
 # Update all packages using yay
-yay -Syu --devel --timeupdate
+yay -Syu --devel --timeupdate --noconfirm
 
 # Install pinentry to remember the lastpass master password
-yay -Sy pinentry
+yay -Sy --noconfirm pinentry
 
 # Intall lastpass and lastpass CLI to be able to access password and access tokens
-yay -Sy lastpass-cli # Maybe we need to install lastpass as well but I'm not sure
+yay -Sy --noconfirm lastpass-cli # Maybe we need to install lastpass as well but I'm not sure
 
 # Generate SSH key to be able to work with SSH later on. Maybe, we should wait until we actually need it
-yay -Sy openssh
+yay -Sy --noconfirm openssh
 ssh-keygen -t ed25519 -C "niklas@themossconcept.com"
 eval "$(ssh-agent -s)"
 
 # Install GitHub CLI and authenticate to gain access to your repos including your dotfiles
-yay -Sy github-cli
+yay -Sy --noconfirm github-cli
 # We need to be root in order to login to lastpass and use it
-sudo lpass show --notes 5561560319192977980 | gh auth login --with-token
+lpass login niklas.noerregaard@gmail.com 
+lpass show --notes 5561560319192977980 | gh auth login --with-token
 
 # Intall homeshick to access your configuration files
-yay -Sy homeshick-git
+git clone https://github.com/andsens/homeshick.git $HOME/.homesick/repos/homeshick
+printf '\nsource "$HOME/.homesick/repos/homeshick/homeshick.sh"' >> $HOME/.bashrc
+source $HOME/.bashrc
 
 homeshick clone Nnoerregaard/dotfiles
 homeshick link
 
-yay -Sy zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --keep-zshrc"
-
-# Use zsh instead of bash
-zsh
-source ~/.zshrc
-
 # Set up node (needed for neovim)
-yay -Sy nvm
-source /usr/share/nvm/init-nvm.sh # Consider putting this in the .zshrc so it's always sourced
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+# Load nvm for the first use just below. In the future, it's being loaded through .zshrc
+source $HOME/.nvm/nvm.sh
 nvm install --lts
 npm install -g npm # Update npm to latest version
-npm install -g neovim
+npm install -g neovim # Link our installed node to neovim
 
 # Set up Python (needed for neovim)
-yay -Sy python-pynvim
+yay -Sy --noconfirm python-pynvim
 
 # Set up tmux which also includes clipboard tools
-yay -Sy tmux 
+yay -Sy --noconfirm tmux 
 
 # This is to make VimPlug work.
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 # Needed to make Denite work. Consider upgrading to ddu at some point
-yay -Sy the_silver_searcher
-
-# We want to use tmux anyway and entering it is the easiest 
-# way to get clipboard support without a GUI 
-tmux
+yay -Sy --noconfirm the_silver_searcher
 
 # Set up neovim
-yay -Sy neovim
+yay -Sy --noconfirm neovim
 # Remember to run PlugInstall and CocInstall on the first neovim run. This hasn't been tested yet!
 nvim --headless +'PlugInstall --sync' +qa  
 nvim --headless +CocInstall +qa
@@ -97,4 +89,6 @@ nvim --headless +UpdateRemotePlugins +qa
 
 export EDITOR=nvim
 
-
+yay -Sy --noconfirm zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --keep-zshrc"
+zsh -c "source ~/.zshrc && tmux"
