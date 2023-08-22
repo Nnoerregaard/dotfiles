@@ -118,7 +118,7 @@ nnoremap gw :<C-u>DeniteCursorWord grep:.<CR>
 
 colorscheme minimalist
 
-let g:coc_global_extensions = [ 'coc-omnisharp', 'coc-tsserver', 'coc-eslint', 'coc-vetur', 'coc-snippets', 'coc-json' ]
+let g:coc_global_extensions = [  'coc-tsserver', 'coc-eslint', 'coc-snippets', 'coc-json' ]
 
 " Use <leader>x for convert visual selected code to snippet
 xmap <leader>x  <Plug>(coc-convert-snippet)
