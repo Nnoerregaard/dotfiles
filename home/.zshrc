@@ -129,14 +129,6 @@ alias diff="git diff ':!*.lock*'"
 alias c=clear
 alias tx-tmuxinator
 
-alias gc=gcloud
-alias k=kubectl
-alias kdev='k config use-context gke_customer-pri-dev-e206_europe-west4_bsonecustomer03-dev'
-alias ktest='k config use-context gke_customer-pri-dev-e206_europe-west4_bsonecustomer03-test'
-alias kprod='k config use-context gke_customer-pri-prod-1817_europe-west4_bsonecustomer03-prod'
-
-alias bsvpn='sudo openconnect -u ext.niklas.moss --protocol=anyconnect external.bestseller.com'
-
 # Make it easy to edit and source configuration
 alias ec='nvim ~/.zshrc'
 alias sc='source ~/.zshrc'
@@ -176,9 +168,3 @@ alias sc='source ~/.zshrc'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/niklasmoss/.google_cloud/path.zsh.inc' ]; then . '/Users/niklasmoss/.google_cloud/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/niklasmoss/.google_cloud/completion.zsh.inc' ]; then . '/Users/niklasmoss/.google_cloud/completion.zsh.inc'; fi
