@@ -122,6 +122,8 @@ alias yd='yarn dev'
 alias ys='yarn start'
 alias y='yarn'
 alias es='expo start'
+alias gc=gcloud
+alias k=kubectl
 alias clean='rm -rf node_modules package-lock.json yarn.lock'
 # This is seriously awesome! Creates a GitHub PR from your current branch towards master and copies the link of it to your clipboard 
 alias pr='gh pr create --fill | pbcopy'
@@ -132,6 +134,11 @@ alias tx-tmuxinator
 # Make it easy to edit and source configuration
 alias ec='nvim ~/.zshrc'
 alias sc='source ~/.zshrc'
+
+# Bestseller stuff
+alias kdev='k config use-context gke_customer-pri-dev-e206_europe-west4_bsonecustomer03-dev'
+alias ktest='k config use-context gke_customer-pri-dev-e206_europe-west4_bsonecustomer03-test'
+alias kprod='k config use-context gke_customer-pri-prod-1817_europe-west4_bsonecustomer03-prod'
 
 # User configuration
 

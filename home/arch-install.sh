@@ -1,6 +1,14 @@
 # Update pacman
 pacman -Sy --noconfirm
 
+# Reset pacman keys as package installations fail if one is missing or out of date
+pacman -Sy --noconfirm archlinux-keyring
+pacman-key --init
+pacman-key --populate
+
+# This is necessary in order for git to work
+pacman -Sy --noconfirm glibc
+
 # Install git to do setup and also just for general development
 pacman -Sy --noconfirm git
 # Install sudo to check the validity of the sudoer file after modification
@@ -11,11 +19,11 @@ pacman -Sy --noconfirm sed
 # Add user that can work with sudo
 useradd -m -G wheel -s /bin/bash niklas
 passwd niklas
-# NB! This line has been known to change across different versions of Arch. If you get an 
+# NB! This line has been known to change across different versions of Arch and diferent versions of keyring. If you get an 
 # erro about the user not being in sudoers, check the file manually.
 # This line number should work with the Arch version that is used in the Arch Linux
-# docker image with image ID 1105a6ef0052. Other known line numbers to work include 85
-sed -i '89s/# //g' /etc/sudoers # Add wheel users with passwords to sudoers 
+# docker image with image ID 1105a6ef0052. Other known line numbers to work include 85 and 84
+sed -i '108s/# //g' /etc/sudoers # Add wheel users with passwords to sudoers. TODO: Find a better way to do this! 
 visudo -c # Check that the sudoers file is still valid
 
 # Install yay to access all community packages
@@ -32,6 +40,10 @@ cd ~
 
 # Update all packages using yay
 yay -Syu --devel --timeupdate --noconfirm
+
+# Install docker (NB! Only works when systemd is available which is not the case in a Docker container!)
+yay -Sy --noconfirm docker
+yay -Sy --noconfirm docker-compose
 
 # Install pinentry to remember the lastpass master password
 yay -Sy --noconfirm pinentry
@@ -57,6 +69,10 @@ source $HOME/.bashrc
 
 homeshick clone Nnoerregaard/dotfiles
 homeshick link
+
+# Login to company GitHub to be able to access work repos
+gh auth logout
+lpass show --notes 6835548308542009880 | gh auth login --with-token
 
 # Set up node (needed for neovim)
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
@@ -88,6 +104,8 @@ nvim --headless +CocInstall +qa
 nvim --headless +UpdateRemotePlugins +qa
 
 export EDITOR=nvim
+
+su niklas --session-command "yay -Si --noconfirm google-chrome"
 
 yay -Sy --noconfirm zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --keep-zshrc"
