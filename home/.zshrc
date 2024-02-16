@@ -135,10 +135,14 @@ alias tx-tmuxinator
 alias ec='nvim ~/.zshrc'
 alias sc='source ~/.zshrc'
 
+alias kcontext='k config current-context'
+alias klocal='k config use-context minikube'
+
 # Bestseller stuff
-alias kdev='k config use-context gke_customer-pri-dev-e206_europe-west4_bsonecustomer03-dev'
-alias ktest='k config use-context gke_customer-pri-dev-e206_europe-west4_bsonecustomer03-test'
-alias kprod='k config use-context gke_customer-pri-prod-1817_europe-west4_bsonecustomer03-prod'
+alias kdev='k config use-context gke_planning-pri-dev-b0b9_europe-west4_planning01-dev'
+alias ktest='k config use-context gke_planning-pri-dev-b0b9_europe-west4_planning01-test'
+alias kprod='k config use-context gke_planning-pri-prod-976d_europe-west4_planning01-prod'
+alias bsvpn='sudo openconnect -u ext.niklas.moss --protocol=anyconnect external.bestseller.com'
 
 # User configuration
 
@@ -175,3 +179,13 @@ alias kprod='k config use-context gke_customer-pri-prod-1817_europe-west4_bsonec
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/niklasmoss/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/niklasmoss/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/niklasmoss/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/niklasmoss/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
