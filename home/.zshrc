@@ -176,6 +176,7 @@ alias bsvpn='sudo openconnect -u ext.niklas.moss --protocol=anyconnect external.
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[[ $- =~ i ]] && bindkey -r '\ec'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
