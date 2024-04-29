@@ -182,7 +182,7 @@ alias bsvpn='sudo openconnect -u ext.niklas.moss --protocol=anyconnect external.
 
 
 # Load Angular CLI autocompletion.
-source <(ng completion script)
+# source <(ng completion script)
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/niklasmoss/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/niklasmoss/Downloads/google-cloud-sdk/path.zsh.inc'; fi

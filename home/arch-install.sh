@@ -1,6 +1,7 @@
-# Update pacman
+#Update pacman
 pacman -Sy --noconfirm
 
+pacman -Sy --noconfirm man-db man-pages
 # Reset pacman keys as package installations fail if one is missing or out of date
 pacman -Sy --noconfirm archlinux-keyring
 pacman-key --init
@@ -67,7 +68,7 @@ git clone https://github.com/andsens/homeshick.git $HOME/.homesick/repos/homeshi
 printf '\nsource "$HOME/.homesick/repos/homeshick/homeshick.sh"' >> $HOME/.bashrc
 source $HOME/.bashrc
 
-homeshick clone Nnoerregaard/dotfiles
+homeshick clone https://github.com/Nnoerregaard/dotfiles.git
 homeshick link
 
 # Login to company GitHub to be able to access work repos
@@ -105,8 +106,39 @@ nvim --headless +UpdateRemotePlugins +qa
 
 export EDITOR=nvim
 
-su niklas --session-command "yay -Si --noconfirm google-chrome"
+# Install keyd for keyboard remapping, most noticeably remapping caps lock to ctrl 
+cd ~
+yay -Sy keyd-git
+sudo systemctl enable keyd && sudo systemctl start keyd
+sudo cp ~/.config/keyd/main.conf /etc/keyd/default.conf
 
+# Install X11 (consider switching to Waryland!) and i3 to acheive better colors, fonts and to use chrome
+pacman -Sy --noconfirm xorg-server
+pacman -Sy --noconfirm xorg-xinit
+# TODO: This needs to change if the CPU changes. Find a way to automate lspci -v | grep -A1 -e VGA -e 3D  
+pacman -Sy --noconfirm xf86-video-intel
+pacman -Sy virtualbox
+pacman -Sy --noconfirm xterm
+pacman -Sy --noconfirm xorg-xrandr
+pacman -Sy --noconfirm xorg-xlsfonts
+pacman -Sy --noconfirm i3
+
+# Set up sensible fonts. The font itself should be set in .Xresources which is symlinked by homeshick
+pacman -Sy --noconfirm fontconfig
+pacman -Sy --noconfirm extra/xorg-mkfontscale
+pacman -Sy --noconfirm ttf-meslo-nerd-font-powerlevel10k
+fc-cache -f -v
+
+# Turn the TTF directory into a font dir for use by X11!
+cd /usr/share/fonts/TTF
+mkfontdir 
+cd ~
+
+# su niklas --session-command "yay -Si --noconfirm google-chrome"
+
+# Install oh my zsh 
 yay -Sy --noconfirm zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --keep-zshrc"
 zsh -c "source ~/.zshrc && tmux"
+
+p10k configure
