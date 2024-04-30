@@ -341,11 +341,11 @@ let g:loaded_perl_provider = 0
 :nnoremap <leader>T gT
 
 " Easy copy to clipboard 
-:nnoremap cy "*y
-:nnoremap cyy "*yy
-:nnoremap cY "*Y
-:nnoremap cp "*p
-:nnoremap cP "*P
+:nnoremap cy "+y
+:nnoremap cyy "+yy
+:nnoremap cY "+Y
+:nnoremap cp "+p
+:nnoremap cP "+P
 
 " Easy save
 :nnoremap <leader>s :w<CR>

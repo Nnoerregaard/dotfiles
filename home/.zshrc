@@ -37,7 +37,7 @@ fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
 # Setup nvm on Mac OS X with homebrew
 # Set up the path to include everything I need from Python to nvim to binaries in various locations. Remember to clean this up from time to time!
 export ANDROID_PLATFORM_TOOLS='/Users/niklasmoss/Library/Android/sdk/platform-tools/' 
-export PATH=$HOME/bin:$HOME/.cargo/bin:/usr/local/bin:/usr/local/bin/nvim-osx64/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/$HOME/.homesick/repos/homeshick/bin:$ANDROID_SDK_ROOT/emulator:$ANDROID_SDK_ROOT/tools/bin:/usr/local/share/dotnet:/opt/homebrew/bin:$ANDROID_PLATFORM_TOOLS:$HOME/.sonar-scanner/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/bin/nvim-osx64/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/$HOME/.homesick/repos/homeshick/bin:/opt/google/chrome:$PATH
 
 # NB! NVM needs to be the last command to modify the path, otherwise, it'll always default to system, see https://github.com/nvm-sh/nvm/issues/1184 
 
@@ -143,6 +143,10 @@ alias kdev='k config use-context gke_planning-pri-dev-b0b9_europe-west4_planning
 alias ktest='k config use-context gke_planning-pri-dev-b0b9_europe-west4_planning01-test'
 alias kprod='k config use-context gke_planning-pri-prod-976d_europe-west4_planning01-prod'
 alias bsvpn='sudo openconnect -u ext.niklas.moss --protocol=anyconnect external.bestseller.com'
+
+# Easy copy and paste in arch linux
+alias copy='xsel --clipboard --input'
+alias paste='xsel --clipboard --output'
 
 # User configuration
 

@@ -110,7 +110,8 @@ export EDITOR=nvim
 cd ~
 yay -Sy keyd-git
 sudo systemctl enable keyd && sudo systemctl start keyd
-sudo cp ~/.config/keyd/main.conf /etc/keyd/default.conf
+sudo cp ~/.config/keyd/COPY_OF_KEYD_CONFIG_THIS_DOES_NOT_DO_ANYTHING.conf /etc/keyd/default.conf
+
 
 # Install X11 (consider switching to Waryland!) and i3 to acheive better colors, fonts and to use chrome
 pacman -Sy --noconfirm xorg-server
