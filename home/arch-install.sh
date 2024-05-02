@@ -72,7 +72,6 @@ homeshick clone https://github.com/Nnoerregaard/dotfiles.git
 homeshick link
 
 # Login to company GitHub to be able to access work repos
-gh auth logout
 lpass show --notes 6835548308542009880 | gh auth login --with-token
 
 # Set up node (needed for neovim)
@@ -86,8 +85,15 @@ npm install -g neovim # Link our installed node to neovim
 # Set up Python (needed for neovim)
 yay -Sy --noconfirm python-pynvim
 
-# Set up tmux which also includes clipboard tools
+# Set up xsel for clipboard tool
+yay -Sy --noconfirm xsel
+
+# Set up tmux
 yay -Sy --noconfirm tmux 
+yay -Sy --noconfirm tmuxinator
+mkdir /usr/local/share/zsh
+mkdir /usr/local/share/zsh/site-functions
+wget https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.zsh -O /usr/local/share/zsh/site-functions/_tmuxinator
 
 # This is to make VimPlug work.
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
@@ -112,7 +118,6 @@ yay -Sy keyd-git
 sudo systemctl enable keyd && sudo systemctl start keyd
 sudo cp ~/.config/keyd/COPY_OF_KEYD_CONFIG_THIS_DOES_NOT_DO_ANYTHING.conf /etc/keyd/default.conf
 
-
 # Install X11 (consider switching to Waryland!) and i3 to acheive better colors, fonts and to use chrome
 pacman -Sy --noconfirm xorg-server
 pacman -Sy --noconfirm xorg-xinit
@@ -123,6 +128,18 @@ pacman -Sy --noconfirm xterm
 pacman -Sy --noconfirm xorg-xrandr
 pacman -Sy --noconfirm xorg-xlsfonts
 pacman -Sy --noconfirm i3
+
+# Install google chrome
+su niklas --session-command "yay -Si --noconfirm google-chrome"
+
+# Install circle CI
+yay -Sy circle-cli-bin
+
+# Install docker
+pacman -Sy --noconfirm docker
+systemctl start docker.service
+systemctl enable docker.service
+sudo usermod -aG docker niklas
 
 # Set up sensible fonts. The font itself should be set in .Xresources which is symlinked by homeshick
 pacman -Sy --noconfirm fontconfig
@@ -135,11 +152,8 @@ cd /usr/share/fonts/TTF
 mkfontdir 
 cd ~
 
-# su niklas --session-command "yay -Si --noconfirm google-chrome"
-
 # Install oh my zsh 
 yay -Sy --noconfirm zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --keep-zshrc"
-zsh -c "source ~/.zshrc && tmux"
+zsh -c "source ~/.zshrc"
 
-p10k configure
