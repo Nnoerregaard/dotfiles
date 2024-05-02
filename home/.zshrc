@@ -129,7 +129,7 @@ alias clean='rm -rf node_modules package-lock.json yarn.lock'
 alias pr='gh pr create --fill | pbcopy'
 alias diff="git diff ':!*.lock*'"
 alias c=clear
-alias tx-tmuxinator
+alias tx=tmuxinator
 
 # Make it easy to edit and source configuration
 alias ec='nvim ~/.zshrc'
