@@ -137,9 +137,9 @@ yay -Sy circle-cli-bin
 
 # Install docker
 pacman -Sy --noconfirm docker
+usermod -aG docker niklas
 systemctl start docker.service
 systemctl enable docker.service
-sudo usermod -aG docker niklas
 
 # Set up sensible fonts. The font itself should be set in .Xresources which is symlinked by homeshick
 pacman -Sy --noconfirm fontconfig
@@ -155,5 +155,7 @@ cd ~
 # Install oh my zsh 
 yay -Sy --noconfirm zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --keep-zshrc"
-zsh -c "source ~/.zshrc"
+
+# Start the final terminal after configuration is set up
+zsh -c "source ~/.zshrc && su niklas"
 
