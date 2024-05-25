@@ -1,3 +1,12 @@
+# NB! BEFORE doing anything else, remember to set up systemd-networkd and systemd-resolved. Install, enable and start in systemctl.
+# ALSO REMEMBER the following content in /etc/systemd/network/wired.network
+
+# [Match]
+# Name=eno1
+
+# [Network]
+# DHCP=yes
+
 #Update pacman
 pacman -Sy --noconfirm
 
@@ -82,8 +91,12 @@ nvm install --lts
 npm install -g npm # Update npm to latest version
 npm install -g neovim # Link our installed node to neovim
 
-# Set up Python (needed for neovim)
+# Set up Python needed for neovim, VPN and loads of other stuff 
+yay -Sy --noconfirm python311
 yay -Sy --noconfirm python-pynvim
+yay -Sy --noconfirm python-certifi
+
+yay -S --noconfirm openssl
 
 # Set up xsel for clipboard tool
 yay -Sy --noconfirm xsel
@@ -131,6 +144,9 @@ pacman -Sy --noconfirm i3
 
 # Install google chrome
 su niklas --session-command "yay -Si --noconfirm google-chrome"
+
+# Install Todoist CLI
+yay -Sy todoist
 
 # Install circle CI
 yay -Sy circle-cli-bin

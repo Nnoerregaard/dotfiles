@@ -126,10 +126,11 @@ alias gc=gcloud
 alias k=kubectl
 alias clean='rm -rf node_modules package-lock.json yarn.lock'
 # This is seriously awesome! Creates a GitHub PR from your current branch towards master and copies the link of it to your clipboard 
-alias pr='gh pr create --fill | pbcopy'
+alias pr='gh pr create --fill | copy'
 alias diff="git diff ':!*.lock*'"
 alias c=clear
 alias tx=tmuxinator
+alias todo=todoist-cli
 
 # Make it easy to edit and source configuration
 alias ec='nvim ~/.zshrc'
@@ -147,6 +148,10 @@ alias bsvpn='sudo openconnect -u ext.niklas.moss --protocol=anyconnect external.
 # Easy copy and paste in arch linux
 alias copy='xsel --clipboard --input'
 alias paste='xsel --clipboard --output'
+
+export CUSTOM_USER_AGENT="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+alias google-chrome='google-chrome --disable-device-emulation --user-agent=$CUSTOM_USER_AGENT'
+export QTWEBENGINE_CHROMIUM_FLAGS='--disable-device-emulation --user-agent=$CUSTOM_USER_AGENT'
 
 # User configuration
 
