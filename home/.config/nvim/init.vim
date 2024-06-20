@@ -31,6 +31,8 @@ Plug 'posva/vim-vue'
 Plug 'digitaltoad/vim-pug'
 " Tmux config file syntax highlighting
 Plug 'tmux-plugins/vim-tmux'
+" For Yarn PnP 
+Plug 'lbrayner/vim-rzip'
 
 filetype plugin indent on
 "TODO: Customizing syntax highlighting
@@ -187,6 +189,7 @@ endfunction
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 nnoremap <silent><expr> <c-space> coc#refresh()
+
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
