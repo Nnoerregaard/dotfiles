@@ -37,7 +37,7 @@ fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
 # Setup nvm on Mac OS X with homebrew
 # Set up the path to include everything I need from Python to nvim to binaries in various locations. Remember to clean this up from time to time!
 export ANDROID_PLATFORM_TOOLS='/Users/niklasmoss/Library/Android/sdk/platform-tools/' 
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/bin/nvim-osx64/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/$HOME/.homesick/repos/homeshick/bin:/opt/google/chrome:$PATH
+export PATH=$HOME/bin:/usr/local/bin:/opt/homebrew/bin:/usr/local/bin/nvim-osx64/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/$HOME/.homesick/repos/homeshick/bin:/opt/google/chrome:$PATH
 
 # NB! NVM needs to be the last command to modify the path, otherwise, it'll always default to system, see https://github.com/nvm-sh/nvm/issues/1184 
 
@@ -144,12 +144,12 @@ alias klocal='k config use-context minikube'
 alias kdev='k config use-context gke_planning-pri-dev-b0b9_europe-west4_planning01-dev'
 alias ktest='k config use-context gke_planning-pri-dev-b0b9_europe-west4_planning01-test'
 alias kprod='k config use-context gke_planning-pri-prod-976d_europe-west4_planning01-prod'
-alias kmaterial='k config use-context gke_products-pri-dev-9052_europe-west4_bsoneproduct'
+alias kmaterial='k config use-context gke_products-pri-dev-9052_europe-west4_bsoneproduct02-dev'
 alias bsvpn='sudo openconnect -u ext.niklas.moss --protocol=anyconnect external.bestseller.com'
 
 # Easy copy and paste in arch linux
 alias copy='xsel --clipboard --input'
-alias paste='xsel --clipboard --output'
+alias paste='xsel --clipboard --output | tr -d '\n'
 
 export CUSTOM_USER_AGENT="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
 alias google-chrome='google-chrome --disable-device-emulation --user-agent=$CUSTOM_USER_AGENT'
