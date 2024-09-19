@@ -55,6 +55,16 @@ yay -Syu --devel --timeupdate --noconfirm
 yay -Sy --noconfirm docker
 yay -Sy --noconfirm docker-compose
 
+# Set up credential manager to enable docker login
+yay -Sy --noconfirm docker-credential-pass
+yay -Sy --noconfirm pass
+yay -Sy --noconfirm gnupg
+
+# Generate key in gnupg
+# Do pass init -- key -- with the key just generated (use same password as for LastPass
+# Change credsStore in ~/.docker/config.json to be pass instead of desktop
+# Do Docker login with the password from docker hub
+
 # Install pinentry to remember the lastpass master password
 yay -Sy --noconfirm pinentry
 

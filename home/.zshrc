@@ -5,6 +5,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Synchronise the PRIMARY and CLIPBOARD clipboards to seamlessly copy/paste between chrome, neovim and tmux
+autocutsel -s CLIPBOARD &
+autocutsel -s PRIMARY &
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 # Path your neovim configuration 
@@ -143,15 +147,21 @@ alias klocal='k config use-context minikube'
 alias kdev='k config use-context gke_planning-pri-dev-b0b9_europe-west4_planning01-dev'
 alias ktest='k config use-context gke_planning-pri-dev-b0b9_europe-west4_planning01-test'
 alias kprod='k config use-context gke_planning-pri-prod-976d_europe-west4_planning01-prod'
-alias bsvpn='sudo openconnect -u ext.niklas.moss --protocol=anyconnect external.bestseller.com'
+alias bsvpn='cd /home/niklas/vpn/openfortivpn-webview-modified/openfortivpn-webview-electron && npm run --silent start "dk-vpn.bestseller.com:444/remote/saml/start?realm=external&redirect=1" > VPN_COOKIE_FILE && cat VPN_COOKIE_FILE | sudo openfortivpn dk-vpn.bestseller.com:444 --realm=external --cookie-on-stdin --trusted-cert 346eea66469321391cefa5bddf6429d670fffb35607eb482c065e982a0e1277d'
 
 # Easy copy and paste in arch linux
 alias copy='xsel --clipboard --input'
-alias paste='xsel --clipboard --output'
+alias paste='xsel --clipboard --output --trim'
 
 export CUSTOM_USER_AGENT="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
 alias google-chrome='google-chrome --disable-device-emulation --user-agent=$CUSTOM_USER_AGENT'
 export QTWEBENGINE_CHROMIUM_FLAGS='--disable-device-emulation --user-agent=$CUSTOM_USER_AGENT'
+
+# Todoist shorthands
+
+alias focus="todo sync && todo list --filter '@Focus'"
+alias quick="todo sync && todo list --filter '@Quick'"
+alias research="todo sync && todo list --filter '@Research'"
 
 # User configuration
 

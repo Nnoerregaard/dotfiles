@@ -31,6 +31,8 @@ Plug 'posva/vim-vue'
 Plug 'digitaltoad/vim-pug'
 " Tmux config file syntax highlighting
 Plug 'tmux-plugins/vim-tmux'
+" For Yarn PnP
+Plug 'lbrayner/vim-rzip'
 
 filetype plugin indent on
 "TODO: Customizing syntax highlighting
