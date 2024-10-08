@@ -33,6 +33,8 @@ Plug 'digitaltoad/vim-pug'
 Plug 'tmux-plugins/vim-tmux'
 " For Yarn PnP
 Plug 'lbrayner/vim-rzip'
+" For Git integration
+Plug 'tpope/vim-fugitive'
 
 filetype plugin indent on
 "TODO: Customizing syntax highlighting

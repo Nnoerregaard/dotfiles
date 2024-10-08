@@ -1,5 +1,9 @@
-
+{
   "eslint.autoFixOnSave": true,
   "coc.preferences.formatOnSave": true,
-  "snippets.ultisnips.pythonPrompt": false
+  "snippets.ultisnips.pythonPrompt": false,
+  "eslint.packageManager": "yarn",
+  "eslint.nodePath": ".yarn/sdks",
+  "workspace.workspaceFolderCheckCwd": false,
+  "tsserver.tsdk": ".yarn/sdks/typescript/lib"
 }

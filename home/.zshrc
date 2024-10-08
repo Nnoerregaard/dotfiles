@@ -5,10 +5,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Synchronise the PRIMARY and CLIPBOARD clipboards to seamlessly copy/paste between chrome, neovim and tmux
-autocutsel -s CLIPBOARD &
-autocutsel -s PRIMARY &
-
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 # Path your neovim configuration 
@@ -205,7 +201,7 @@ alias research="todo sync && todo list --filter '@Research'"
 # source <(ng completion script)
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/niklasmoss/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/niklasmoss/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/home/niklas/google-cloud-sdk/path.zsh.inc' ]; then . '/home/niklas/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/niklasmoss/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/niklasmoss/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/home/niklas/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/niklas/google-cloud-sdk/completion.zsh.inc'; fi

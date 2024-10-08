@@ -54,11 +54,22 @@ yay -Syu --devel --timeupdate --noconfirm
 # Install docker (NB! Only works when systemd is available which is not the case in a Docker container!)
 yay -Sy --noconfirm docker
 yay -Sy --noconfirm docker-compose
+usermod -aG docker niklas
+systemctl start docker.service
+systemctl enable docker.service
 
 # Set up credential manager to enable docker login
 yay -Sy --noconfirm docker-credential-pass
 yay -Sy --noconfirm pass
 yay -Sy --noconfirm gnupg
+
+# Set up Kubernetes
+yay -Sy --noconfirm kubectl
+curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-linux-x86_64.tar.gz
+tar -xf google-cloud-cli-linux-x86_64.tar.gz
+./google-cloud-sdk/install.sh
+source ~/.zshrc
+gcloud components install gke-gcloud-auth-plugin
 
 # Generate key in gnupg
 # Do pass init -- key -- with the key just generated (use same password as for LastPass
@@ -140,6 +151,9 @@ cd ~
 yay -Sy keyd-git
 sudo systemctl enable keyd && sudo systemctl start keyd
 sudo cp ~/.config/keyd/COPY_OF_KEYD_CONFIG_THIS_DOES_NOT_DO_ANYTHING.conf /etc/keyd/default.conf
+# To enable Danish letters and other Unicode extended characters
+setxkbmap -option compose:menu 
+ln -s /usr/share/keyd/keyd.compose ~/.XCompose 
 
 # Install X11 (consider switching to Waryland!) and i3 to acheive better colors, fonts and to use chrome
 pacman -Sy --noconfirm xorg-server
@@ -157,15 +171,6 @@ su niklas --session-command "yay -Si --noconfirm google-chrome"
 
 # Install Todoist CLI
 yay -Sy todoist
-
-# Install circle CI
-yay -Sy circle-cli-bin
-
-# Install docker
-pacman -Sy --noconfirm docker
-usermod -aG docker niklas
-systemctl start docker.service
-systemctl enable docker.service
 
 # Set up sensible fonts. The font itself should be set in .Xresources which is symlinked by homeshick
 pacman -Sy --noconfirm fontconfig

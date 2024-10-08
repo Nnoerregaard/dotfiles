@@ -32,6 +32,14 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
+# Make sure audio works
+pipewire &
+pipewire-pulse &
+
+# Synchronise the PRIMARY and CLIPBOARD clipboards to seamlessly copy/paste between chrome, neovim and tmux
+autocutsel -s CLIPBOARD &
+autocutsel -s PRIMARY &
+
 # Display screen saver and prevents the screen from going blank
 xset -dpms
 xset s off
