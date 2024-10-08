@@ -145,15 +145,19 @@ alias kdev='k config use-context gke_planning-pri-dev-b0b9_europe-west4_planning
 alias ktest='k config use-context gke_planning-pri-dev-b0b9_europe-west4_planning01-test'
 alias kprod='k config use-context gke_planning-pri-prod-976d_europe-west4_planning01-prod'
 alias kmaterial='k config use-context gke_products-pri-dev-9052_europe-west4_bsoneproduct02-dev'
-alias bsvpn='sudo openconnect -u ext.niklas.moss --protocol=anyconnect external.bestseller.com'
 
-# Easy copy and paste in arch linux
-alias copy='xsel --clipboard --input'
-alias paste='xsel --clipboard --output | tr -d '\n'
+alias bsvpn='cd /home/niklas/vpn/openfortivpn-webview-modified/openfortivpn-webview-electron && npm run --silent start "dk-vpn.bestseller.com:444/remote/saml/start?realm=external&redirect=1" > VPN_COOKIE_FILE && cat VPN_COOKIE_FILE | sudo openfortivpn dk-vpn.bestseller.com:444 --realm=external --cookie-on-stdin --trusted-cert 346eea66469321391cefa5bddf6429d670fffb35607eb482c065e982a0e1277d'
+
 
 export CUSTOM_USER_AGENT="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
 alias google-chrome='google-chrome --disable-device-emulation --user-agent=$CUSTOM_USER_AGENT'
 export QTWEBENGINE_CHROMIUM_FLAGS='--disable-device-emulation --user-agent=$CUSTOM_USER_AGENT'
+
+# Todoist shorthands
+
+alias focus="todo sync && todo list --filter '@Focus'"
+alias quick="todo sync && todo list --filter '@Quick'"
+alias research="todo sync && todo list --filter '@Research'"
 
 # User configuration
 
@@ -197,7 +201,7 @@ export QTWEBENGINE_CHROMIUM_FLAGS='--disable-device-emulation --user-agent=$CUST
 # source <(ng completion script)
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/niklasmoss/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/niklasmoss/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/home/niklas/google-cloud-sdk/path.zsh.inc' ]; then . '/home/niklas/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/niklasmoss/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/niklasmoss/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/home/niklas/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/niklas/google-cloud-sdk/completion.zsh.inc'; fi
