@@ -63,7 +63,7 @@ yay -Sy --noconfirm docker-credential-pass
 yay -Sy --noconfirm pass
 yay -Sy --noconfirm gnupg
 
-# Set up Kubernetes
+# Set up Kubernetes. Both gcloud config and kube config is in homeshick
 yay -Sy --noconfirm kubectl
 curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-linux-x86_64.tar.gz
 tar -xf google-cloud-cli-linux-x86_64.tar.gz
