@@ -1,0 +1,8 @@
+[core]
+account = ext.niklas.moss@bestseller.com
+project = products-pri-dev-9052
+
+[compute]
+zone = europe-west4-a
+region = europe-west4
+
