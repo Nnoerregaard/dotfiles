@@ -149,11 +149,11 @@ export EDITOR=nvim
 # Install keyd for keyboard remapping, most noticeably remapping caps lock to ctrl 
 cd ~
 yay -Sy keyd-git
-sudo systemctl enable keyd && sudo systemctl start keyd
 sudo cp ~/.config/keyd/COPY_OF_KEYD_CONFIG_THIS_DOES_NOT_DO_ANYTHING.conf /etc/keyd/default.conf
 # To enable Danish letters and other Unicode extended characters
 setxkbmap -option compose:menu 
 ln -s /usr/share/keyd/keyd.compose ~/.XCompose 
+sudo systemctl enable keyd && sudo systemctl start keyd
 
 # Install X11 (consider switching to Waryland!) and i3 to acheive better colors, fonts and to use chrome
 pacman -Sy --noconfirm xorg-server

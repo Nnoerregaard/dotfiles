@@ -126,7 +126,7 @@ alias gc=gcloud
 alias k=kubectl
 alias clean='rm -rf node_modules package-lock.json yarn.lock'
 # This is seriously awesome! Creates a GitHub PR from your current branch towards master and copies the link of it to your clipboard 
-alias pr='gh pr create --fill | copy'
+alias pr='gh pr create --fill | xsel -p -s -b'
 alias diff="git diff ':!*.lock*'"
 alias c=clear
 alias tx=tmuxinator
@@ -146,7 +146,7 @@ alias ktest='k config use-context gke_planning-pri-dev-b0b9_europe-west4_plannin
 alias kprod='k config use-context gke_planning-pri-prod-976d_europe-west4_planning01-prod'
 alias kmaterial='k config use-context gke_products-pri-dev-9052_europe-west4_bsoneproduct02-dev'
 
-alias bsvpn='cd /home/niklas/vpn/openfortivpn-webview-modified/openfortivpn-webview-electron && npm run --silent start "dk-vpn.bestseller.com:444/remote/saml/start?realm=external&redirect=1" > VPN_COOKIE_FILE && cat VPN_COOKIE_FILE | sudo openfortivpn dk-vpn.bestseller.com:444 --realm=external --cookie-on-stdin --trusted-cert 346eea66469321391cefa5bddf6429d670fffb35607eb482c065e982a0e1277d'
+alias bsvpn='cd /home/niklas/vpn/openfortivpn-webview-modified/openfortivpn-webview-electron && npm run --silent start "dk-vpn.bestseller.com:444/remote/saml/start?realm=external&redirect=1" > VPN_COOKIE_FILE && cat VPN_COOKIE_FILE | sudo openfortivpn dk-vpn.bestseller.com:444 --realm=external --pppd-no-peerdns --cookie-on-stdin --trusted-cert 7144fcce659cf305ea3bf452681533f8229906ea816fd0ad02fe848f52d10e0d' 
 
 
 export CUSTOM_USER_AGENT="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
