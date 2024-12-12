@@ -166,6 +166,9 @@ pacman -Sy --noconfirm xorg-xrandr
 pacman -Sy --noconfirm xorg-xlsfonts
 pacman -Sy --noconfirm i3
 
+# Used for taking screenshots from the terminal with i3 shortcuts
+yay -Sy --noconfirm maim
+
 # Install google chrome
 su niklas --session-command "yay -Si --noconfirm google-chrome"
 
