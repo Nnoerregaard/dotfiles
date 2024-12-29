@@ -88,12 +88,12 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation (u because it's right next to t and all the logical ones where taken)
-bindsym Shift+bar split h
+bindsym $mod+Shift+bar split h
 
 bindsym $mod+b exec --no-startup-id google-chrome
 
 # split in vertical orientationa (t for top)
-bindsym Shift+underscore split v
+bindsym $mod+Shift+underscore split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
