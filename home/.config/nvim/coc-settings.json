@@ -2,5 +2,12 @@
   "eslint.autoFixOnSave": true,
   "coc.preferences.formatOnSave": true,
   "snippets.ultisnips.pythonPrompt": false,
-  "tsserver.log": "normal"
+  "tsserver.log": "normal",
+  "languageserver": {
+    "graphql": {
+      "command": "graphql-lsp",
+      "args": ["server", "-m", "stream"],
+      "filetypes": ["typescript", "typescriptreact", "graphql"]
+    }
+  }
 }

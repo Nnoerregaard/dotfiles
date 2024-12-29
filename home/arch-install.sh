@@ -166,6 +166,9 @@ pacman -Sy --noconfirm xorg-xrandr
 pacman -Sy --noconfirm xorg-xlsfonts
 pacman -Sy --noconfirm i3
 
+# Install mons to allow me to easily work with multiple monitors
+yay -Sy --noconfirm mons
+
 # Used for taking screenshots from the terminal with i3 shortcuts
 yay -Sy --noconfirm maim
 

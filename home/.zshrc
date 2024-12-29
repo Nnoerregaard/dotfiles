@@ -150,7 +150,7 @@ alias bsvpn='cd /home/niklas/vpn/openfortivpn-webview-modified/openfortivpn-webv
 
 
 export CUSTOM_USER_AGENT="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
-alias google-chrome='google-chrome --disable-device-emulation --user-agent=$CUSTOM_USER_AGENT'
+alias google-chrome='google-chrome --disable-device-emulation --user-agent=$CUSTOM_USER_AGENT &> /dev/null'
 export QTWEBENGINE_CHROMIUM_FLAGS='--disable-device-emulation --user-agent=$CUSTOM_USER_AGENT'
 
 # Todoist shorthands
