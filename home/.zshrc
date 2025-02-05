@@ -131,6 +131,7 @@ alias diff="git diff ':!*.lock*'"
 alias c=clear
 alias tx=tmuxinator
 alias todo=todoist-cli
+alias print='maim --format=png --select screenshot.png'
 
 # Make it easy to edit and source configuration
 alias ec='nvim ~/.zshrc'
@@ -149,7 +150,7 @@ alias kmaterial='k config use-context gke_products-pri-dev-9052_europe-west4_bso
 alias bsvpn='cd /home/niklas/vpn/openfortivpn-webview-modified/openfortivpn-webview-electron && npm run --silent start "dk-vpn.bestseller.com:444/remote/saml/start?realm=external&redirect=1" > VPN_COOKIE_FILE && cat VPN_COOKIE_FILE | sudo openfortivpn dk-vpn.bestseller.com:444 --realm=external --pppd-no-peerdns --cookie-on-stdin --trusted-cert 7144fcce659cf305ea3bf452681533f8229906ea816fd0ad02fe848f52d10e0d' 
 
 
-export CUSTOM_USER_AGENT="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+export CUSTOM_USER_AGENT="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
 alias google-chrome='google-chrome --disable-device-emulation --user-agent=$CUSTOM_USER_AGENT &> /dev/null'
 export QTWEBENGINE_CHROMIUM_FLAGS='--disable-device-emulation --user-agent=$CUSTOM_USER_AGENT'
 

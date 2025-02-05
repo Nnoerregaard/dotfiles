@@ -87,7 +87,6 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation (u because it's right next to t and all the logical ones where taken)
 bindsym $mod+Shift+bar split h
 
 bindsym $mod+b exec --no-startup-id google-chrome
