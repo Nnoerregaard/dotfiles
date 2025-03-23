@@ -53,6 +53,8 @@ yay -Syu --devel --timeupdate --noconfirm
 
 # Install docker (NB! Only works when systemd is available which is not the case in a Docker container!)
 yay -Sy --noconfirm docker
+yay -Sy --noconfirm docker-buildx
+docker buildx install
 yay -Sy --noconfirm docker-compose
 usermod -aG docker niklas
 systemctl start docker.service
