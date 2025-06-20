@@ -14,6 +14,10 @@ export ASPNETCORE_ENVIRONMENT=Local
 # Set the editor to neovim
 export EDITOR=nvim
 
+# Antropic API key used for Avante.nvim and potentially other AI powered workflows in the future
+export ANTHROPIC_API_KEY="$(lpass show --notes ANTHROPIC_API_KEY)"
+export OPENAI_API_KEY="$(lpass show --notes OPENAI_API_KEY)"
+
 # Gets powerlevel10k to use as zsh theme 
 [ ! -d ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k ] && git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
@@ -37,7 +41,7 @@ fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
 # Setup nvm on Mac OS X with homebrew
 # Set up the path to include everything I need from Python to nvim to binaries in various locations. Remember to clean this up from time to time!
 export ANDROID_PLATFORM_TOOLS='/Users/niklasmoss/Library/Android/sdk/platform-tools/' 
-export PATH=$HOME/bin:/usr/local/bin:/opt/homebrew/bin:/usr/local/bin/nvim-osx64/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/$HOME/.homesick/repos/homeshick/bin:/opt/google/chrome:$PATH
+export PATH=$HOME/bin:/usr/local/bin:/opt/homebrew/bin:/usr/local/bin/nvim-osx64/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/$HOME/.homesick/repos/homeshick/bin:/opt/google/chrome:/home/niklas/.local/share/gem/ruby/3.4.0/bin:$PATH
 
 # NB! NVM needs to be the last command to modify the path, otherwise, it'll always default to system, see https://github.com/nvm-sh/nvm/issues/1184 
 
@@ -107,6 +111,9 @@ export NVM_DIR="$HOME/.nvm"
 plugins=(git fzf zsh-autosuggestions tmuxinator)
 
 source $ZSH/oh-my-zsh.sh
+
+# Syncrhonise clipboards for sane copy/pasting
+autocutsel -f
 
 # Use vi keybindings in the termianl because they are awesome!
 bindkey -v

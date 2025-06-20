@@ -6,6 +6,9 @@ let maplocalleader="\\"
 "       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 "  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 "endif
+"
+let g:vimsyn_embed = 'lPr'  " support embedded lua, python and ruby
+
 
 call plug#begin('~/.vim/plugged')
 " The left sidebar
@@ -35,12 +38,34 @@ Plug 'tmux-plugins/vim-tmux'
 Plug 'lbrayner/vim-rzip'
 " For Git integration
 Plug 'tpope/vim-fugitive'
+" For GraphQL syntax highlighting
+Plug 'jparise/vim-graphql'
+
+" Deps
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'stevearc/dressing.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'MunifTanjim/nui.nvim'
+Plug 'MeanderingProgrammer/render-markdown.nvim'
+
+" Optional deps
+Plug 'hrsh7th/nvim-cmp'
+Plug 'nvim-tree/nvim-web-devicons' "or Plug 'echasnovski/mini.icons'
+Plug 'HakonHarnes/img-clip.nvim'
+Plug 'zbirenbaum/copilot.lua'
+
+" Yay, pass source=true if you want to build from source
+Plug 'yetone/avante.nvim', { 'branch': 'main', 'do': 'make' }
+
+" TODO: Fix this so it runs on every start-up automatically!
+" lua require('avante').setup()
 
 filetype plugin indent on
 "TODO: Customizing syntax highlighting
 
 " autocmd BufRead *.tsx set syntax=typescript
 call plug#end()
+
 
 " Debugger - Customize later!
 let g:vimspector_enable_mappings = 'HUMAN'
@@ -128,8 +153,9 @@ let g:coc_global_extensions = [  'coc-tsserver', 'coc-eslint', 'coc-snippets', '
 xmap <leader>x  <Plug>(coc-convert-snippet)
 
 ""DEPENDENCIES
-"source ~/.config/nvim/plugins.vim
+"source ~/.config/nvim/plugns.vi
 source ~/.config/nvim/nerdtree.vimrc
+lua require('init')
 "source ~/.config/nvim/typescript.vimrc
 "source ~/.config/nvim/utils.vim
 "source ~/.config/nvim/navigation.vim

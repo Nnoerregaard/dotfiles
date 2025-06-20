@@ -186,6 +186,9 @@ pacman -Sy --noconfirm extra/xorg-mkfontscale
 pacman -Sy --noconfirm ttf-meslo-nerd-font-powerlevel10k
 fc-cache -f -v
 
+# Install autocutsel to synchronise clipboards
+yay -Sy autocutsel
+
 # Turn the TTF directory into a font dir for use by X11!
 cd /usr/share/fonts/TTF
 mkfontdir 
