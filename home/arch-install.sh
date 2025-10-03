@@ -135,7 +135,8 @@ wget https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/t
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
-# Needed to make Denite work. Consider upgrading to ddu at some point
+# Needed to fzf.vim (fussy finding in vim) work.
+yay -Sy --noconfirm fzf
 yay -Sy --noconfirm the_silver_searcher
 
 # Set up neovim
