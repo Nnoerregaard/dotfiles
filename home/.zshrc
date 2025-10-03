@@ -14,9 +14,17 @@ export ASPNETCORE_ENVIRONMENT=Local
 # Set the editor to neovim
 export EDITOR=nvim
 
+LPASS_AGENT_DISABLE=0
+LPASS_AGENT_TIMEOUT=86400
+
 # Antropic API key used for Avante.nvim and potentially other AI powered workflows in the future
-export ANTHROPIC_API_KEY="$(lpass show --notes ANTHROPIC_API_KEY)"
-export OPENAI_API_KEY="$(lpass show --notes OPENAI_API_KEY)"
+if [[ "$(lpass status)" == "Logged in as niklas.noerregaard@gmail.com." ]]; then
+  export ANTHROPIC_API_KEY="$(lpass show --notes ANTHROPIC_API_KEY)"
+  export OPENAI_API_KEY="$(lpass show --notes OPENAI_API_KEY)"
+fi
+
+# For using avante zen mode
+alias avante='nvim -c "lua vim.defer_fn(function()require(\"avante.api\").zen_mode()end, 100)"'
 
 # Gets powerlevel10k to use as zsh theme 
 [ ! -d ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k ] && git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
@@ -37,6 +45,7 @@ POWERLEVEL10K_mode="nerdfont-complete"
 
 #Make homeshick work
 fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
+
 
 # Setup nvm on Mac OS X with homebrew
 # Set up the path to include everything I need from Python to nvim to binaries in various locations. Remember to clean this up from time to time!
@@ -156,7 +165,6 @@ alias kmaterial='k config use-context gke_products-pri-dev-9052_europe-west4_bso
 
 alias bsvpn='cd /home/niklas/vpn/openfortivpn-webview-modified/openfortivpn-webview-electron && npm run --silent start "dk-vpn.bestseller.com:444/remote/saml/start?realm=external&redirect=1" > VPN_COOKIE_FILE && cat VPN_COOKIE_FILE | sudo openfortivpn dk-vpn.bestseller.com:444 --realm=external --cookie-on-stdin --trusted-cert 7144fcce659cf305ea3bf452681533f8229906ea816fd0ad02fe848f52d10e0d' 
 
-
 export CUSTOM_USER_AGENT="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
 alias google-chrome='google-chrome --disable-device-emulation --user-agent=$CUSTOM_USER_AGENT &> /dev/null'
 export QTWEBENGINE_CHROMIUM_FLAGS='--disable-device-emulation --user-agent=$CUSTOM_USER_AGENT'
@@ -213,3 +221,5 @@ if [ -f '/home/niklas/google-cloud-sdk/path.zsh.inc' ]; then . '/home/niklas/goo
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/niklas/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/niklas/google-cloud-sdk/completion.zsh.inc'; fi
+
+. "$HOME/.local/bin/env"
