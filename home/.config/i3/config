@@ -89,7 +89,7 @@ bindsym $mod+Shift+Right move right
 
 bindsym $mod+Shift+bar split h
 
-bindsym $mod+b exec --no-startup-id google-chrome
+bindsym $mod+b exec firefox
 
 # split in vertical orientationa (t for top)
 bindsym $mod+Shift+underscore split v
@@ -195,12 +195,13 @@ bar {
 workspace $ws1 output "DP3"
 workspace $ws2 output "DP1"
 assign [class="Google-chrome"] $ws1
+assign [class="firefox"] $ws1
 assign [class="UXTerm"] $ws2
 
 # exec ./home/niklas/startup.sh 
 exec xrandr --output DP3 --mode 1920x1080 && xrandr --output DP3 --mode 3840x2160
 exec mons -e left
 exec xrandr --output DP1 --rotate left
-exec google-chrome --disable-device-emulation --user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"  --new-window https://www.canva.com/design/DAGmABWhSII/H3l0QiY9rRmloBqwqX2Biw/edit
-exec google-chrome --disable-device-emulation --user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"  --new-window teams.microsoft.com bestjira.atlassian.net/login
-exec tx start Utilities
+exec firefox --new-window https://www.linkedin.com/sales/home
+exec firefox --new-window https://docs.google.com/spreadsheets/d/15e2svIxkSEVt3pHif1K8pPQhY2N90PoUl8hnV2JgWng/edit?gid=748019350#gid=748019350
+exec i3-sensible-terminal -e ~/terminal-startup.sh 
