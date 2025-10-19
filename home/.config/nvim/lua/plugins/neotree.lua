@@ -11,7 +11,16 @@ return {
     keys = {
       { "<C-n>", ":Neotree<CR>" },
       { "<leader>r", ":Neotree filesystem reveal left<CR>" },
-    }
+    },
+    opts = {
+      filesystem = {
+        filtered_items = {
+          visible = true,
+          hide_dotfiles = false,
+          hide_gitignored = true,
+        },
+      },
+    },
   },
   {
     "antosha417/nvim-lsp-file-operations",

@@ -7,10 +7,16 @@
 # [Network]
 # DHCP=yes
 
-#Update pacman
+# Update pacman
 pacman -Sy --noconfirm
 
 pacman -Sy --noconfirm man-db man-pages
+
+# Ensure system clock is always updated
+pacman -Sy --noconfirm ntp
+systemctl enable ntpd.service
+systemctl start ntpd.service
+
 # Reset pacman keys as package installations fail if one is missing or out of date
 pacman -Sy --noconfirm archlinux-keyring
 pacman-key --init
@@ -59,6 +65,8 @@ yay -Sy --noconfirm docker-compose
 usermod -aG docker niklas
 systemctl start docker.service
 systemctl enable docker.service
+
+yay -Sy --noconfirm docker-compose
 
 # Set up credential manager to enable docker login
 yay -Sy --noconfirm docker-credential-pass
@@ -138,6 +146,7 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 # Needed to fzf.vim (fussy finding in vim) work.
 yay -Sy --noconfirm fzf
 yay -Sy --noconfirm the_silver_searcher
+yay -Sy --noconfirm ripgrep
 
 # Set up neovim
 yay -Sy --noconfirm neovim

@@ -3,8 +3,8 @@ return {
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   -- ⚠️ must add this setting! ! !
   build = vim.fn.has("win32") ~= 0
-      and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
-      or "make",
+  and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
+  or "make",
   event = "VeryLazy",
   version = false, -- Never set this value to "*"! Never!
   ---@module 'avante'
@@ -20,10 +20,10 @@ return {
         endpoint = "https://api.anthropic.com",
         model = "claude-sonnet-4-20250514",
         timeout = 30000, -- Timeout in milliseconds
-          extra_request_body = {
-            temperature = 0.75,
-            max_tokens = 20480,
-          },
+        extra_request_body = {
+          temperature = 0.75,
+          max_tokens = 20480,
+        },
       },
       moonshot = {
         endpoint = "https://api.moonshot.ai/v1",
@@ -43,11 +43,11 @@ return {
     "nvim-mini/mini.pick", -- for file_selector provider mini.pick
     "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
     "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
-    "ibhagwan/fzf-lua", -- for file_selector provider fzf
+    { "ibhagwan/fzf-lua", dependencies = { "nvim-tree/nvim-web-devicons" }, }, -- for file_selector provider fzf
     "stevearc/dressing.nvim", -- for input provider dressing
     "folke/snacks.nvim", -- for input provider snacks
     "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-    "zbirenbaum/copilot.lua", -- for providers='copilot'
+    -- "zbirenbaum/copilot.lua", -- for providers='copilot'
     {
       -- support for image pasting
       "HakonHarnes/img-clip.nvim",
