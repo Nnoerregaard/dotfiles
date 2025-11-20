@@ -18,6 +18,7 @@
 	insteadOf = https://bitbucket.org/
 [init]
 	templatedir = /Users/niklasnorregaard/.git-templates
+	defaultBranch = main
 [pull]
 	rebase = false
 	autoSetupRemote = true

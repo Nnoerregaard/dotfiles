@@ -21,6 +21,7 @@ LPASS_AGENT_TIMEOUT=86400
 if [[ "$(lpass status)" == "Logged in as niklas.noerregaard@gmail.com." ]]; then
   export ANTHROPIC_API_KEY="$(lpass show --notes ANTHROPIC_API_KEY)"
   export OPENAI_API_KEY="$(lpass show --notes OPENAI_API_KEY)"
+  export TAVILY_API_KEY="$(lpass show --notes TAVILY_API_KEY)"
 fi
 
 # For using avante zen mode
