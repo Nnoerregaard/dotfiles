@@ -17,12 +17,9 @@ export EDITOR=nvim
 LPASS_AGENT_DISABLE=0
 LPASS_AGENT_TIMEOUT=86400
 
-# Antropic API key used for Avante.nvim and potentially other AI powered workflows in the future
-if [[ "$(lpass status)" == "Logged in as niklas.noerregaard@gmail.com." ]]; then
-  export ANTHROPIC_API_KEY="$(lpass show --notes ANTHROPIC_API_KEY)"
-  export OPENAI_API_KEY="$(lpass show --notes OPENAI_API_KEY)"
-  export TAVILY_API_KEY="$(lpass show --notes TAVILY_API_KEY)"
-fi
+export ANTHROPIC_API_KEY="$(pass show api_keys/ANTHROPIC_API_KEY)"
+export OPENAI_API_KEY="$(pass show api_keys/OPENAI_API_KEY)"
+export TAVILY_API_KEY="$(pass show api_keys/TAVILY_API_KEY)"
 
 # For using avante zen mode
 alias avante='nvim -c "lua vim.defer_fn(function()require(\"avante.api\").zen_mode()end, 100)"'
