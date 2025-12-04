@@ -19,6 +19,7 @@ LPASS_AGENT_TIMEOUT=86400
 
 export OPENAI_API_KEY="$(pass show api_keys/OPENAI_API_KEY)"
 export TAVILY_API_KEY="$(pass show api_keys/TAVILY_API_KEY)"
+export MORPH_API_KEY="$(pass show api_keys/MORPH_API_KEY)"
 echo $(pass show AI_development_team/DockerHubPAT) | docker login -u niklasmoss --password-stdin
 
 # For using avante zen mode
@@ -214,10 +215,10 @@ alias research="todo sync && todo list --filter '@Research'"
 # Load Angular CLI autocompletion.
 # source <(ng completion script)
 
+. "$HOME/.local/bin/env"
+
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/niklas/google-cloud-sdk/path.zsh.inc' ]; then . '/home/niklas/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/home/niklas/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/niklas/Downloads/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/home/niklas/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/niklas/google-cloud-sdk/completion.zsh.inc'; fi
-
-. "$HOME/.local/bin/env"
+if [ -f '/home/niklas/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/niklas/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
