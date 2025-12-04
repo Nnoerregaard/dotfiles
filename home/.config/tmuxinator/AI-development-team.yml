@@ -1,0 +1,64 @@
+# /home/niklas/.config/tmuxinator/AI-development-team.yml
+
+name: AI-development-team
+root: /home/niklas/code/upwork_development_agency
+
+# Optional tmux socket
+# socket_name: foo
+
+# Note that the pre and post options have been deprecated and will be replaced by
+# project hooks.
+
+# Project hooks
+
+# Runs on project start, always
+# on_project_start: command
+
+# Run on project start, the first time
+# on_project_first_start: command
+
+# Run on project start, after the first time
+# on_project_restart: command
+
+# Run on project exit ( detaching from tmux session )
+# on_project_exit: command
+
+# Run on project stop
+# on_project_stop: command
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux. This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+# startup_window: editor
+
+# Specifies (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
+# startup_pane: 1
+
+# Controls whether the tmux session should be attached to automatically. Defaults to true.
+# attach: false
+
+windows:
+  - initialisation-mcp-server:
+      layout: b4e6,194x150,0,0[194x75,0,0,1,194x37,0,76,2,194x36,0,114,3]
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
+      panes:
+        - cd initialisation_tool && nvim
+        - cd initialisation_tool && ls
+        - cd initialisation_tool && npm install && npm run start
+  - portfolio-project: 
+      layout: 5c0c,194x150,0,0[194x42,0,0,1,194x42,0,43,10,194x27,0,86,4,194x36,0,114,6]
+      panes: 
+        - cd AI-team/data-inputter && nvim
+        - cd AI-team/data-inputter && claude
+        - cd AI-team/data-inputter && docker-compose --profile dev up
+        - cd AI-team/data-inputter && ls
+  - docs-mcp-server: nvm use 24.11.0 && npx --yes @arabold/docs-mcp-server@latest

@@ -17,9 +17,9 @@ export EDITOR=nvim
 LPASS_AGENT_DISABLE=0
 LPASS_AGENT_TIMEOUT=86400
 
-export ANTHROPIC_API_KEY="$(pass show api_keys/ANTHROPIC_API_KEY)"
 export OPENAI_API_KEY="$(pass show api_keys/OPENAI_API_KEY)"
 export TAVILY_API_KEY="$(pass show api_keys/TAVILY_API_KEY)"
+echo $(pass show AI_development_team/DockerHubPAT) | docker login -u niklasmoss --password-stdin
 
 # For using avante zen mode
 alias avante='nvim -c "lua vim.defer_fn(function()require(\"avante.api\").zen_mode()end, 100)"'

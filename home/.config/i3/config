@@ -202,6 +202,6 @@ assign [class="UXTerm"] $ws2
 exec xrandr --output DP3 --mode 1920x1080 && xrandr --output DP3 --mode 3840x2160
 exec mons -e left
 exec xrandr --output DP1 --rotate left
-exec firefox --first-startup https://app.todoist.com/app/today
-exec firefox --new-window https://mail.google.com/mail/u/2/#inbox
-exec i3-sensible-terminal -e ~/terminal-startup.sh 
+exec firefox --first-startup https://mail.google.com/mail/u/2/#inbox https://mail.google.com/mail/u/1/#inbox
+exec firefox --new-window https://app.todoist.com/app/today 
+exec i3-sensible-terminal && tmuxinator start AI-development-team
