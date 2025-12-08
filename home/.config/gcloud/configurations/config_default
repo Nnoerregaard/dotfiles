@@ -1,6 +1,6 @@
 [core]
-account = ext.niklas.moss@bestseller.com
-project = products-pri-dev-9052
+account = ai-development-team@idyllic-kit-229010.iam.gserviceaccount.com
+project = idyllic-kit-229010
 
 [compute]
 zone = europe-west4-a

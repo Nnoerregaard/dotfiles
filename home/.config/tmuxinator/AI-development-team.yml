@@ -59,6 +59,6 @@ windows:
       panes: 
         - cd AI-team/data-inputter && nvim
         - cd AI-team/data-inputter && claude
-        - cd AI-team/data-inputter && docker-compose --profile dev up
+        - cd AI-team/data-inputter && npm run dev
         - cd AI-team/data-inputter && ls
   - docs-mcp-server: nvm use 24.11.0 && npx --yes @arabold/docs-mcp-server@latest

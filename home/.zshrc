@@ -20,6 +20,7 @@ LPASS_AGENT_TIMEOUT=86400
 export OPENAI_API_KEY="$(pass show api_keys/OPENAI_API_KEY)"
 export TAVILY_API_KEY="$(pass show api_keys/TAVILY_API_KEY)"
 export MORPH_API_KEY="$(pass show api_keys/MORPH_API_KEY)"
+export AVANTE_ANTHROPIC_API_KEY="$(pass show api_keys/ANTHROPIC_API_KEY)"
 echo $(pass show AI_development_team/DockerHubPAT) | docker login -u niklasmoss --password-stdin
 
 # For using avante zen mode
