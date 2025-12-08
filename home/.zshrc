@@ -156,6 +156,7 @@ alias sc='source ~/.zshrc'
 alias kcontext='k config current-context'
 alias klocal='k config use-context minikube'
 
+alias shutdown="sh ~/shutdown_script.sh"
 
 # Bestseller stuff
 alias kdev='k config use-context gke_planning-pri-dev-b0b9_europe-west4_planning01-dev'
